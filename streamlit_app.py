@@ -7,9 +7,19 @@ R = 8.314
 # --- Konfigurasi Halaman Streamlit ---
 st.set_page_config(layout="wide", page_title="ThermoCalc Lab")
 
-# --- Custom CSS untuk UI/UX Paling Menarik ---
+# --- Custom CSS untuk UI/UX Paling Menarik dengan Latar Belakang Bergerak ---
 st.markdown("""
     <style>
+        /* Definisi keyframes untuk animasi latar belakang */
+        @keyframes background-pan {
+            0% {
+                background-position: 0% 0%;
+            }
+            100% {
+                background-position: 100% 100%;
+            }
+        }
+
         /* Mengatur font utama dan latar belakang gradien untuk seluruh aplikasi */
         .stApp {
             background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%); /* Gradien gelap yang kaya */
@@ -20,6 +30,8 @@ st.markdown("""
                               radial-gradient(at 50% 100%, hsla(225,39%,30%,1) 0, transparent 50%),
                               radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
             background-attachment: fixed;
+            background-size: 200% 200%; /* Ukuran latar belakang lebih besar dari viewport */
+            animation: background-pan 30s linear infinite alternate; /* Animasi latar belakang */
         }
 
         /* Styling untuk judul utama (H1) */
@@ -87,7 +99,7 @@ st.markdown("""
             box-shadow: 0 5px 20px rgba(59, 130, 246, 0.4); /* Bayangan lebih dalam */
             transition: all 0.3s ease;
             width: 100%; /* Lebar penuh */
-            margin-top: 1.5rem; /* Jarak lebih besar */
+            margin-top: 1.5rem; /* Jarak dari elemen di atasnya */
             border: none; /* Hapus border default */
             position: relative;
             overflow: hidden;
@@ -129,6 +141,8 @@ st.markdown("""
             margin-top: 0;
             border: 1px solid rgba(71, 85, 105, 0.8);
             transition: all 0.3s ease;
+            padding: 0.75rem 1rem; /* Sesuaikan padding agar tidak terlalu besar */
+            font-weight: 500;
         }
         div.stButton > button[data-testid^="stButton-primary"]:nth-child(1):hover,
         div.stButton > button[data-testid^="stButton-primary"]:nth-child(2):hover,
