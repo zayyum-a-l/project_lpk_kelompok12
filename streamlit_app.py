@@ -27,8 +27,8 @@ st.markdown("""
             font-family: 'Inter', sans-serif;
             /* Menambahkan efek latar belakang abstrak */
             background-image: radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%),
-                              radial-gradient(at 50% 100%, hsla(225,39%,30%,1) 0, transparent 50%),
-                              radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+                                 radial-gradient(at 50% 100%, hsla(225,39%,30%,1) 0, transparent 50%),
+                                 radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
             background-attachment: fixed;
             background-size: 200% 200%; /* Ukuran latar belakang lebih besar dari viewport */
             animation: background-pan 30s linear infinite alternate; /* Animasi latar belakang */
@@ -247,7 +247,6 @@ st.markdown("""
         }
 
     </style>
-    <!-- Font Awesome untuk ikon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     """, unsafe_allow_html=True)
 
@@ -507,3 +506,48 @@ with col_conv: # Menggunakan kolom yang sama untuk konverter
         if pascal is not None:
             st.info(f"Atmosfer: {atm_conv_pascal:.5f} atm | mmHg: {mmhg_conv_pascal:.2f}")
         st.session_state.prev_pascal = pascal
+
+    # --- Volume Converter ---
+    st.markdown("### Volume")
+    col7, col8, col9 = st.columns(3)
+
+    with col7:
+        cm_cubed = st.number_input("Cubic Centimeters (cm³)", format="%.2f", key="conv_cm_cubed")
+        if cm_cubed is not None:
+            m_cubed_conv_cm = cm_cubed * 1e-6
+            dm_cubed_conv_cm = cm_cubed * 1e-3
+        else:
+            m_cubed_conv_cm = None
+            dm_cubed_conv_cm = None
+
+    with col8:
+        m_cubed = st.number_input("Cubic Meters (m³)", format="%.4f", key="conv_m_cubed")
+        if m_cubed is not None:
+            cm_cubed_conv_m = m_cubed * 1e6
+            dm_cubed_conv_m = m_cubed * 1e3
+        else:
+            cm_cubed_conv_m = None
+            dm_cubed_conv_m = None
+
+    with col9:
+        dm_cubed = st.number_input("Cubic Decimeters (dm³)", format="%.2f", key="conv_dm_cubed")
+        if dm_cubed is not None:
+            cm_cubed_conv_dm = dm_cubed * 1e3
+            m_cubed_conv_dm = dm_cubed * 1e-3
+        else:
+            cm_cubed_conv_dm = None
+            m_cubed_conv_dm = None
+
+    # Display volume conversion results dynamically
+    if st.session_state.get('conv_cm_cubed') != st.session_state.get('prev_cm_cubed', None):
+        if cm_cubed is not None:
+            st.info(f"Cubic Meters: {m_cubed_conv_cm:.6f} m³ | Cubic Decimeters: {dm_cubed_conv_cm:.4f} dm³")
+        st.session_state.prev_cm_cubed = cm_cubed
+    elif st.session_state.get('conv_m_cubed') != st.session_state.get('prev_m_cubed', None):
+        if m_cubed is not None:
+            st.info(f"Cubic Centimeters: {cm_cubed_conv_m:.2f} cm³ | Cubic Decimeters: {dm_cubed_conv_m:.4f} dm³")
+        st.session_state.prev_m_cubed = m_cubed
+    elif st.session_state.get('conv_dm_cubed') != st.session_state.get('prev_dm_cubed', None):
+        if dm_cubed is not None:
+            st.info(f"Cubic Centimeters: {cm_cubed_conv_dm:.2f} cm³ | Cubic Meters: {m_cubed_conv_dm:.6f} m³")
+        st.session_state.prev_dm_cubed = dm_cubed
