@@ -149,7 +149,7 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 # --- Header Aplikasi ---
-st.title("Utilitas Termodinamika Cerdas")
+st.title("ThermoCalc Lab")
 st.markdown('<p class="subheader">Kalkulator dan Konverter untuk Proses Termodinamika.</p>', unsafe_allow_html=True)
 
 # Membagi tata letak menjadi dua kolom utama (kalkulator di kiri, konverter di kanan)
