@@ -150,13 +150,13 @@ st.markdown("""
 
 # --- Header Aplikasi ---
 st.title("ThermoCalc Lab")
-st.markdown('<p class="subheader">Kalkulator dan Konverter untuk Proses Termodinamika.</p>', unsafe_allow_html=True)
+st.markdown('<p class="subheader">Kalkulator dan Konverter untuk Perhitungan Termodinamika.</p>', unsafe_allow_html=True)
 
 # Membagi tata letak menjadi dua kolom utama (kalkulator di kiri, konverter di kanan)
 col_calc, col_conv = st.columns([1, 2]) # Mengubah nama kolom kanan
 
 with col_calc:
-    st.markdown('<h2 class="section-header"><i class="fas fa-calculator text-blue-400"></i> Kalkulator Proses</h2>', unsafe_allow_html=True)
+    st.markdown('<h2 class="section-header"><i class="fas fa-calculator text-blue-400"></i> Kalkulator Termodinamika</h2>', unsafe_allow_html=True)
 
     # Menggunakan st.session_state untuk mengelola tab aktif
     if 'active_tab' not in st.session_state:
