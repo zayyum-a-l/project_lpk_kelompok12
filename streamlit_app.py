@@ -4,10 +4,10 @@ import math
 # Konstanta gas ideal
 R = 8.314
 
-# --- Konfigurasi Halaman Streamlit ---
+# --- Konfigurasi Halaman ---
 st.set_page_config(layout="wide", page_title="ThermoCalc Lab")
 
-# --- Custom CSS untuk UI/UX Paling Menarik dengan Latar Belakang Bergerak ---
+# --- Custom CSS untuk UI/UX ---
 st.markdown("""
     <style>
         /* Definisi keyframes untuk animasi latar belakang */

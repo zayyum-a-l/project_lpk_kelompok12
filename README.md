@@ -43,4 +43,4 @@ Ikuti langkah-langkah berikut untuk menjalankan aplikasi ini di lingkungan lokal
 
 ---
 
-Dibuat dengan ❤️ oleh [Nama Anda/Kelompok Anda]
+Dibuat dengan ❤️ oleh [KELOMPOK 12]
