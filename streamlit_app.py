@@ -1117,19 +1117,11 @@ elif selected == "Tentang Aplikasi":
         st.markdown('<h3>Hubungi Kami</h3>', unsafe_allow_html=True)
         st.markdown("""
             <p>Silakan tinggalkan pesan Anda. Kami akan berusaha merespons sesegera mungkin.</p>
-            <form action="https://formsubmit.co/your.email@example.com" method="post" enctype="text/plain">
-                <label for="email" style="color: {current_theme["text_primary"]}; margin-bottom: 0.5rem; display: block;">Email Anda:</label>
-                <input type="email" id="email" name="email" placeholder="contoh@domain.com" required
-                       style="width: 100%; padding: 0.8rem; margin-bottom: 1rem; border-radius: 0.5rem; border: 1px solid {current_theme["input_border"]}; background-color: {current_theme["input_bg"]}; color: {current_theme["text_primary"]};">
-                
-                <label for="message" style="color: {current_theme["text_primary"]}; margin-bottom: 0.5rem; display: block;">Pesan Anda:</label>
-                <textarea id="message" name="message" rows="5" placeholder="Tulis pesan Anda di sini..." required
-                          style="width: 100%; padding: 0.8rem; margin-bottom: 1.5rem; border-radius: 0.5rem; border: 1px solid {current_theme["input_border"]}; background-color: {current_theme["input_bg"]}; color: {current_theme["text_primary"]};"></textarea>
-                
-                <button type="submit" style="background: {current_theme["button_bg"]}; color: {current_theme["button_text"]}; padding: 0.8rem 2rem; border-radius: 0.5rem; border: none; cursor: pointer; font-weight: 600; transition: background-color 0.2s ease;">
-                    Kirim Pesan
-                </button>
-            </form>
+            <form action="https://formsubmit.co/ajizayum@gmail.com" method="POST">
+     <input type="text" name="name" required>
+     <input type="email" name="email" required>
+     <button type="submit">Send</button>
+</form>
             <p style="margin-top: 2rem; color: {current_theme["text_secondary"]};">
                 Anda juga bisa menghubungi kami melalui GitHub: <a href="https://github.com/your-github-profile" target="_blank">Profil GitHub Kami</a>
             </p>
