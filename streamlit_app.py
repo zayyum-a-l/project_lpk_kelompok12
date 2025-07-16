@@ -1123,6 +1123,6 @@ elif selected == "Tentang Aplikasi":
      <button type="submit">Send</button>
 </form>
             <p style="margin-top: 2rem; color: {current_theme["text_secondary"]};">
-                Anda juga bisa menghubungi kami melalui GitHub: <a href="https://github.com/your-github-profile" target="_blank">Profil GitHub Kami</a>
+                Anda juga bisa menghubungi kami melalui GitHub: <a href="https://github.com/zayyum-a-l" target="_blank">Profil GitHub Kami</a>
             </p>
         """, unsafe_allow_html=True)
