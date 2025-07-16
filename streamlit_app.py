@@ -640,7 +640,7 @@ with st.sidebar:
 if selected == "Beranda":
     st.markdown('<div class="home-container">', unsafe_allow_html=True)
     st.markdown('<h2 class="home-title">SELAMAT DATANG</h2>', unsafe_allow_html=True)
-    st.markdown('<p class="home-subtitle">Di ThermoCalc Lab: Utilitas Termodinamika Cerdas</p>', unsafe_allow_html=True)
+    st.markdown('<p class="home-subtitle">Di ThermoCalc Lab</p>', unsafe_allow_html=True)
     st.markdown('<div class="home-illustration"><i class="fas fa-flask"></i></div>', unsafe_allow_html=True)
     st.markdown("""
         <p class="home-description">
