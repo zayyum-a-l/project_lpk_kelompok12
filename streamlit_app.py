@@ -1091,13 +1091,13 @@ elif selected == "Tentang Aplikasi":
             <p>Suatu gas ideal mengalami proses isobarik pada tekanan konstan <b>10^5 Pa</b>. Volume gas berubah dari <b>0.1 m^3</b> menjadi <b>0.3 m^3</b>. Jika jumlah mol gas adalah <b>1 mol</b> dan suhu awal <b>300 K</b>, suhu akhir <b>900 K</b>, hitung Usaha (W), Perubahan Energi Dalam (ΔU), dan Kalor (Q).</p>
             <p><strong>Diketahui:</strong></p>
             <ul>
-                <li>P = 10^5 Pa</li>
-                <li>V_1 = 0.1 m^3</li>
-                <li>V_2 = 0.3 m^3</li>
-                <li>n = 1 mol</li>
-                <li>T_1 = 300 K</li>
-                <li>T_2 = 900 K</li>
-                <li>R = 8.314 J/mol·K</li>
+                <li>P  = 10^5 Pa</li>
+                <li>V1 = 0.1 m^3</li>
+                <li>V2 = 0.3 m^3</li>
+                <li>n  = 1 mol</li>
+                <li>T1 = 300 K</li>
+                <li>T2 = 900 K</li>
+                <li>R  = 8.314 J/mol·K</li>
             </ul>
             <p><strong>Penyelesaian (menggunakan kalkulator):</strong></p>
             <ol>
