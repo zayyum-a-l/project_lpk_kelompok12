@@ -284,11 +284,7 @@ st.markdown(f"""
         .st-emotion-cache-1cypcdb {{
             gap: 1.5rem;
         }}
-       /* Card-like containers for the main sections */
-        /* Hapus atau komentari seluruh blok ini untuk menghilangkan kotak */
-        /*
-      
-        }}
+       
         /* Mengatur ulang padding untuk input number agar tidak terlalu lebar */
         .stNumberInput > label + div > div {{
             padding: 0;
