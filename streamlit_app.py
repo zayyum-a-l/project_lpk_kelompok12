@@ -1088,11 +1088,11 @@ elif selected == "Tentang Aplikasi":
         st.markdown('<h3>Contoh Soal:</h3>', unsafe_allow_html=True)
         st.markdown("""
             <h4>Contoh Soal 1: Proses Isobarik</h4>
-            <p>Suatu gas ideal mengalami proses isobarik pada tekanan konstan <b>10^5 Pa</b>. Volume gas berubah dari <b>0.1 \text{ m}^3</b> menjadi <b>0.3 \text{ m}^3</b>. Jika jumlah mol gas adalah <b>1 \text{ mol}</b> dan suhu awal <b>300 \text{ K}</b>, suhu akhir <b>900 \text{ K}</b>, hitung Usaha (W), Perubahan Energi Dalam (ΔU), dan Kalor (Q).</p>
+            <p>Suatu gas ideal mengalami proses isobarik pada tekanan konstan <b>10^5 Pa</b>. Volume gas berubah dari <b>0.1 \text{ m^3}</b> menjadi <b>0.3 \text{ m}^3</b>. Jika jumlah mol gas adalah <b>1 \text{ mol}</b> dan suhu awal <b>300 \text{ K}</b>, suhu akhir <b>900 \text{ K}</b>, hitung Usaha (W), Perubahan Energi Dalam (ΔU), dan Kalor (Q).</p>
             <p><strong>Diketahui:</strong></p>
             <ul>
                 <li>P = 10^5 \text{ Pa}</li>
-                <li>V_1 = 0.1 \text{ m}^3</li>
+                <li>V_1 = 0.1 \text{ m^3}</li>
                 <li>V_2 = 0.3 \text{ m}^3</li>
                 <li>n = 1 \text{ mol}</li>
                 <li>T_1 = 300 \text{ K}</li>
