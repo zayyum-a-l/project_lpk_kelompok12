@@ -287,12 +287,7 @@ st.markdown(f"""
        /* Card-like containers for the main sections */
         /* Hapus atau komentari seluruh blok ini untuk menghilangkan kotak */
         /*
-        .st-emotion-cache-fg4pbf {
-            background: {current_theme["bg_card"]};
-            border-radius: 0.75rem;
-            padding: 2rem;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-            border: 1px solid {current_theme["border_color"]};
+      
         }}
         /* Mengatur ulang padding untuk input number agar tidak terlalu lebar */
         .stNumberInput > label + div > div {{
