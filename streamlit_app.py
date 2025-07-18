@@ -505,7 +505,10 @@ st.markdown(f"""
             justify-content: center;
             text-align: center;
             padding: 3rem;
-           
+            background: {current_theme["bg_card"]};
+            border-radius: 1rem;
+            border: 1px solid {current_theme["border_color"]};
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
 
         }}
         .home-title {{
