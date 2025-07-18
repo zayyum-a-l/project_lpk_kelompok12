@@ -1117,6 +1117,89 @@ elif selected == "Tentang Aplikasi":
      <input type="text" name="name" required>
      <input type="email" name="email" required>
      <p type="text" name="name";type="email" name="email">
+     <!DOCTYPE html>
+<html>
+<head>
+<title>Form Pesan</title>
+<style>
+  /* Basic styling for the entire page to match the dark background */
+  body {
+    background-color: #1a1a2e; /* Dark blue-ish background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Make sure it takes full viewport height */
+    margin: 0;
+    font-family: sans-serif; /* A common sans-serif font */
+    color: white; /* Default text color for the main message */
+  }
+
+  .container {
+    text-align: center;
+    padding: 20px;
+    /* You can add more styling here for the container if needed */
+  }
+
+  /* Styling for the main message text */
+  p {
+    font-size: 1.2em; /* Slightly larger text */
+    margin-bottom: 20px; /* Space below the message */
+  }
+
+  /* Styling for the input fields (the two smaller boxes) and textarea (the larger box) */
+  input[type="text"],
+  textarea {
+    background-color: #333333; /* Dark grey background for the boxes */
+    border: 1px solid #555555; /* Subtle border */
+    color: white; /* Color of the text the user types */
+    padding: 10px; /* Internal spacing */
+    border-radius: 5px; /* Slightly rounded corners */
+    font-size: 1em; /* Standard font size inside the boxes */
+    width: 300px; /* Fixed width for the boxes, adjust as needed */
+    box-sizing: border-box; /* Ensures padding and border are included in the width */
+  }
+
+  /* Specific styling for the textarea (the larger message box) */
+  textarea {
+    height: 100px; /* Height for the multi-line message box */
+    resize: vertical; /* Allows the user to resize vertically */
+    margin-top: 20px; /* Space above the textarea */
+  }
+
+  /* Styling for the placeholder text (the faded text inside the boxes) */
+  /* This is the key part to make the text "pudar" (faded) */
+  input::placeholder,
+  textarea::placeholder {
+    color: #a0a0a0; /* Light grey color for faded effect */
+    opacity: 0.8; /* Makes the text slightly transparent */
+  }
+
+  /* Styling for the group of two input boxes */
+  .input-group {
+    display: flex; /* Use flexbox to put them side-by-side */
+    gap: 20px; /* Space between the two input boxes */
+    margin-top: 20px; /* Space above this group */
+    justify-content: center; /* Center the boxes horizontally */
+  }
+
+  .input-group input {
+    flex: 1; /* Makes each input take equal space within the group */
+  }
+
+</style>
+</head>
+<body>
+
+<div class="container">
+  <p>Silakan tinggalkan pesan Anda. Kami akan berusaha merespons sesegera mungkin.</p>
+
+  <div class="input-group">
+    <input type="text" placeholder="Nama Anda"> <input type="text" placeholder="Email Anda"> </div>
+
+  <textarea placeholder="Tulis pesan Anda di sini..."></textarea> </div>
+
+</body>
+</html>
      </p>
      <button type="submit">Send</button>
 </form>
