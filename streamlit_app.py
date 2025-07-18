@@ -288,8 +288,9 @@ st.markdown(f"""
        
         /* Mengatur ulang padding untuk input number agar tidak terlalu lebar */
         .stNumberInput > label + div > div {{
-            padding: 0;
-            .block-container {{
+            padding: 0;  
+        }}
+        .block-container {{
             padding-top: 3rem;
             padding-bottom: 3rem;
             max-width: 1200px;
