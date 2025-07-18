@@ -290,6 +290,13 @@ st.markdown(f"""
         .stNumberInput > label + div > div {{
             padding: 0;
         }}
+/* Card-like containers for the main sections */
+        .st-emotion-cache-fg4pbf {{ /* Ini adalah div utama yang membungkus kolom di Streamlit */
+            background: {current_theme["bg_card"]};
+            border-radius: 0.75rem; /* Lebih tajam */
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            border: 1px solid {current_theme["border_color"]};
 
         }}
         .stNumberInput input {{
@@ -491,17 +498,7 @@ st.markdown(f"""
         }}
 
         /* HOME PAGE SPECIFIC STYLES */
-        .home-container {{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 3rem;
-            background: {current_theme["bg_card"]};
-            border-radius: 1rem;
-            border: 1px solid {current_theme["border_color"]};
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        
         }}
         .home-title {{
             font-family: 'Montserrat', sans-serif;
