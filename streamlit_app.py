@@ -284,13 +284,15 @@ st.markdown(f"""
         .st-emotion-cache-1cypcdb {{
             gap: 1.5rem;
         }}
-        /* Card-like containers for the main sections */
-        .st-emotion-cache-fg4pbf {{ /* Ini adalah div utama yang membungkus kolom di Streamlit */
-            background: {current_theme["bg_card"]};
-            border-radius: 0.75rem; /* Lebih tajam */
-            padding: 2rem;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
-            border: 1px solid {current_theme["border_color"]};
+       /* Card-like containers for the main sections */
+        /* Hapus atau komentari seluruh blok ini untuk menghilangkan kotak */
+        /*
+        .st-emotion-cache-fg4pbf {
+            background: {current_theme["bg_card"]};
+            border-radius: 0.75rem;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            border: 1px solid {current_theme["border_color"]};
         }}
         /* Mengatur ulang padding untuk input number agar tidak terlalu lebar */
         .stNumberInput > label + div > div {{
