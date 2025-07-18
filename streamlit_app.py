@@ -289,6 +289,14 @@ st.markdown(f"""
         .stNumberInput > label + div > div {{
             padding: 0;
         }}
+        .st-emotion-cache-fg4pbf {{ /* Ini adalah div utama yang membungkus kolom di Streamlit */
+            background: {current_theme["bg_card"]};
+            border-radius: 0.75rem; /* Lebih tajam */
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            border: 1px solid {current_theme["border_color"]};
+
+        }}
         .stNumberInput input {{
             padding: 0.75rem 1rem !important;
         }}
