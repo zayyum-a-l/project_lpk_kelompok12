@@ -1112,11 +1112,6 @@ elif selected == "Tentang Aplikasi":
     with tab_kontak:
         st.markdown('<h3>Hubungi Kami</h3>', unsafe_allow_html=True)
         st.markdown("""
-            <p>Silakan tinggalkan pesan Anda. Kami akan berusaha merespons sesegera mungkin.</p>
-            <form action="https://formsubmit.co/ajizayum@gmail.com" method="POST">
-     <input type="text" name="name" required>
-     <input type="email" name="email" required>
-     <p type="text" name="name";type="email" name="email">
      <!DOCTYPE html>
 <html>
 <head>
