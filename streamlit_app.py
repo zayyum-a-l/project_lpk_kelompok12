@@ -1088,7 +1088,7 @@ elif selected == "Tentang Aplikasi":
         st.markdown('<h3>Contoh Soal:</h3>', unsafe_allow_html=True)
         st.markdown("""
             <h4>Contoh Soal 1: Proses Isobarik</h4>
-            <p>Suatu gas ideal mengalami proses isobarik pada tekanan konstan <b>10^5 Pa</b>. Volume gas berubah dari <b>0.1 \text{ m^3}</b> menjadi <b>0.3 \text{ m}^3</b>. Jika jumlah mol gas adalah <b>1 \text{ mol}</b> dan suhu awal <b>300 \text{ K}</b>, suhu akhir <b>900 \text{ K}</b>, hitung Usaha (W), Perubahan Energi Dalam (ΔU), dan Kalor (Q).</p>
+            <p>Suatu gas ideal mengalami proses isobarik pada tekanan konstan <b>10^5 Pa</b>. Volume gas berubah dari <b>0.1 m^3</b> menjadi <b>0.3 m^3</b>. Jika jumlah mol gas adalah <b>1 mol</b> dan suhu awal <b>300 K</b>, suhu akhir <b>900 K</b>, hitung Usaha (W), Perubahan Energi Dalam (ΔU), dan Kalor (Q).</p>
             <p><strong>Diketahui:</strong></p>
             <ul>
                 <li>P = 10^5 \text{ Pa}</li>
@@ -1105,12 +1105,6 @@ elif selected == "Tentang Aplikasi":
                 <li>Masukkan nilai-nilai yang diketahui.</li>
                 <li>Klik "Hitung Isobarik".</li>
             </ol>
-            <p><strong>Hasil yang diharapkan:</strong></p>
-            <ul>
-                <li>Usaha (W) = P \times (V_2 - V_1) = 10^5 \times (0.3 - 0.1) = 20000 \text{ J}</li>
-                <li>Energi Dalam (ΔU) = 1.5 \times n \times R \times (T_2 - T_1) = 1.5 \times 1 \times 8.314 \times (900 - 300) = 7482.6 \text{ J}</li>
-                <li>Kalor (Q) = W + \Delta U = 20000 + 7482.6 = 27482.6 \text{ J}</li>
-            </ul>
         """, unsafe_allow_html=True)
 
     with tab_kontak:
