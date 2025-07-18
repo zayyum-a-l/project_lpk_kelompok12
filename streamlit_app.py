@@ -1,4 +1,4 @@
-
+e
 
 import streamlit as st
 import math
@@ -498,7 +498,15 @@ st.markdown(f"""
         }}
 
         /* HOME PAGE SPECIFIC STYLES */
-        
+        .home-container {{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 3rem;
+           
+
         }}
         .home-title {{
             font-family: 'Montserrat', sans-serif;
