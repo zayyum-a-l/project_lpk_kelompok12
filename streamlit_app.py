@@ -1104,7 +1104,7 @@ elif selected == "Tentang Aplikasi":
                 <li>Pilih tab "Isobarik" di Kalkulator Termodinamika.</li>
                 <li>Masukkan nilai-nilai yang diketahui.</li>
                 <li>Klik "Hitung Isobarik".</li>
-                 <li>Dan Hasil Akan Muncul.</li>
+                 <li>Dan hasil akan muncul.</li>
                 
             </ol>
         """, unsafe_allow_html=True)
