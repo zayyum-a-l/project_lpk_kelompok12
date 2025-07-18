@@ -117,7 +117,12 @@ st.markdown(f"""
             margin-bottom: 3rem;
             text-shadow: 0 0 5px rgba(187, 187, 187, 0.2);
         }}
-       
+        /* Padding untuk container utama */
+        .block-container {{
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+            max-width: 1200px;
+        }}
         }}
 
         /* Styling untuk semua input teks dan textarea */
