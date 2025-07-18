@@ -298,6 +298,7 @@ st.markdown(f"""
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
             border: 1px solid {current_theme["border_color"]};
 
+
         }}
         .stNumberInput input {{
             padding: 0.75rem 1rem !important;
