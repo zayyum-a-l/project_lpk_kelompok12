@@ -1,4 +1,4 @@
-# Jalankan aplikasi dengan perintah `streamlit run filename.py`
+
 
 import streamlit as st
 import math
