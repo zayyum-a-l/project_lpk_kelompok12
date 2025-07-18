@@ -654,10 +654,10 @@ if selected == "Beranda":
     st.markdown("""
         <ul>
             <li><span>KELOMPOK 12 (1C - ANALISIS KIMIA)</span></li>
-            <li>1. BROOOO (000000000)</li>
-            <li>2. BROOOO (000000000)</li>
-            <li>3. BROOOO (000000000)</li>
-            <li>4. BROOOO (000000000)</li>
+            <li>1. Bagus Inayatullah Pramudana Herman (2460342)</li>
+            <li>2. Ihtiathus Syar'iyah (2460387)</li>
+            <li>3. Nafisa Alya Rahma (2460451)</li>
+            <li>4.  Riko Putra Pamungkas (2460499)</li>
             <li>5. Zayyum Adji Lubis (2460546)</li>
         </ul>
     """, unsafe_allow_html=True)
