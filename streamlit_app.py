@@ -23,6 +23,7 @@ DARK_THEME_COLORS = {
     "bg_primary": "#1a1a2e", # Warna latar belakang utama yang lebih gelap
     "bg_secondary": "#0f0f1c", # Warna latar belakang elemen sekunder
     "bg_sidebar": "#1a1a2e", # Latar belakang sidebar
+    "bg_card": "#1f1f3a", # Latar belakang card/container
     "bg_active_sidebar_item": "#007bff", # Warna biru cerah untuk item sidebar aktif (sesuai option_menu default)
     "bg_hover_sidebar_item": "#2a2a4a", # Warna hover sidebar
 
