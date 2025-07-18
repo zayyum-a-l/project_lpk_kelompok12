@@ -1120,6 +1120,8 @@ elif selected == "Tentang Aplikasi":
             <form action="https://formsubmit.co/ajizayum@gmail.com" method="POST">
      <input type="text" name="name" required>
      <input type="email" name="email" required>
+     <p type="text" name="name";type="email" name="email">
+     </p>
      <button type="submit">Send</button>
 </form>
             <p style="margin-top: 2rem; color: {current_theme["text_secondary"]};">
