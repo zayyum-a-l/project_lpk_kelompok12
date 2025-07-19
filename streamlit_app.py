@@ -1,4 +1,4 @@
-
+# Jalankan aplikasi dengan perintah `streamlit run filename.py`
 
 import streamlit as st
 import math
@@ -22,8 +22,8 @@ st.set_page_config(
 DARK_THEME_COLORS = {
     "bg_primary": "#1a1a2e", # Warna latar belakang utama yang lebih gelap
     "bg_secondary": "#0f0f1c", # Warna latar belakang elemen sekunder
-    "bg_sidebar": "#1a1a2e", # Latar belakang sidebar
     "bg_card": "#1f1f3a", # Latar belakang card/container
+    "bg_sidebar": "#1a1a2e", # Latar belakang sidebar
     "bg_active_sidebar_item": "#007bff", # Warna biru cerah untuk item sidebar aktif (sesuai option_menu default)
     "bg_hover_sidebar_item": "#2a2a4a", # Warna hover sidebar
 
@@ -122,7 +122,6 @@ st.markdown(f"""
             padding-top: 3rem;
             padding-bottom: 3rem;
             max-width: 1200px;
-        }}
         }}
 
         /* Styling untuk semua input teks dan textarea */
@@ -285,27 +284,17 @@ st.markdown(f"""
         .st-emotion-cache-1cypcdb {{
             gap: 1.5rem;
         }}
-       
-        /* Mengatur ulang padding untuk input number agar tidak terlalu lebar */
-        .stNumberInput > label + div > div {{
-            padding: 0;  
-        }}
-        .block-container {{
-            padding-top: 3rem;
-            padding-bottom: 3rem;
-            max-width: 1200px;
-        }}
-
-        }}
-/* Card-like containers for the main sections */
+        /* Card-like containers for the main sections */
         .st-emotion-cache-fg4pbf {{ /* Ini adalah div utama yang membungkus kolom di Streamlit */
             background: {current_theme["bg_card"]};
             border-radius: 0.75rem; /* Lebih tajam */
             padding: 2rem;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
             border: 1px solid {current_theme["border_color"]};
-
-
+        }}
+        /* Mengatur ulang padding untuk input number agar tidak terlalu lebar */
+        .stNumberInput > label + div > div {{
+            padding: 0;
         }}
         .stNumberInput input {{
             padding: 0.75rem 1rem !important;
@@ -506,8 +495,17 @@ st.markdown(f"""
         }}
 
         /* HOME PAGE SPECIFIC STYLES */
-        
-
+        .home-container {{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 3rem;
+            background: {current_theme["bg_card"]};
+            border-radius: 1rem;
+            border: 1px solid {current_theme["border_color"]};
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
         }}
         .home-title {{
             font-family: 'Montserrat', sans-serif;
@@ -1114,11 +1112,11 @@ elif selected == "Tentang Aplikasi":
     with tab_kontak:
         st.markdown('<h3>Hubungi Kami</h3>', unsafe_allow_html=True)
         st.markdown("""
-    <p>Silakan tinggalkan pesan Anda. Kami akan berusaha merespons sesegera mungkin.</p>
+            <p>Silakan tinggalkan pesan Anda. Kami akan berusaha merespons sesegera mungkin.</p>
             <form action="https://formsubmit.co/ajizayum@gmail.com" method="POST">
      <input type="text" name="name" required>
      <input type="email" name="email" required>
-     <p type="text" name="name";type="email" name="email">
+     <button type="submit">Send</button>
 </form>
             <p style="margin-top: 2rem; color: {current_theme["text_secondary"]};">
                 Anda juga bisa menghubungi kami melalui GitHub: <a href="https://github.com/zayyum-a-l" target="_blank">Profil GitHub Kami</a>
