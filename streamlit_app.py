@@ -1357,7 +1357,7 @@ elif selected == "Tentang Aplikasi":
         st.markdown(f"""
             <p>Silakan tinggalkan pesan Anda. Kami akan berusaha merespons sesegera mungkin.</p>
             <form action="https://formsubmit.co/ajizayum@gmail.com" method="POST">
-     <input type="text" name="name" required>
+     <input type="text" name="bro berbicara" required>
      <input type="email" name="email" required>
      <button type="submit">Send</button>
 </form>
