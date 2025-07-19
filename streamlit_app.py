@@ -70,6 +70,19 @@ current_theme = DARK_THEME_COLORS # Kita hanya pakai tema gelap/neon sekarang
 # --- Custom CSS untuk UI/UX Baru ---
 st.markdown(f"""
     <style>
+        /* Sembunyikan header/toolbar default Streamlit jika ada */
+        .stToolbar {{
+            display: none !important;
+        }}
+        header {{
+            visibility: hidden !important;
+            height: 0px !important;
+            padding: 0px !important;
+        }}
+        .stApp > header {{
+            background-color: transparent !important;
+        }}
+
         /* Definisi keyframes untuk animasi latar belakang */
         @keyframes background-pan {{
             0% {{
@@ -91,6 +104,7 @@ st.markdown(f"""
             background-attachment: fixed;
             background-size: 200% 200%;
             animation: background-pan 30s linear infinite alternate;
+            padding-top: 0rem; /* Sesuaikan padding atas setelah header disembunyikan */
         }}
 
         /* Styling untuk judul utama (H1) */
