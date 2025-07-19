@@ -668,10 +668,10 @@ if selected == "Beranda":
     st.markdown("""
         <ul>
             <li><span>KELOMPOK 12 (1C - ANALISIS KIMIA)</span></li>
-            <li>1. BROOOO (000000000)</li>
-            <li>2. BROOOO (000000000)</li>
-            <li>3. BROOOO (000000000)</li>
-            <li>4. BROOOO (000000000)</li>
+            <li>1. Bagus Inayatullah Pramudana Herman (2460342)</li>
+            <li>2. Ihtiathus Syar'iyah (2460387)</li>
+            <li>3. Nafisa Alya Rahma (2460451)</li>
+            <li>4.  Riko Putra Pamungkas (2460499)</li>
             <li>5. Zayyum Adji Lubis (2460546)</li>
         </ul>
     """, unsafe_allow_html=True)
@@ -1102,29 +1102,25 @@ elif selected == "Tentang Aplikasi":
         st.markdown('<h3>Contoh Soal:</h3>', unsafe_allow_html=True)
         st.markdown("""
             <h4>Contoh Soal 1: Proses Isobarik</h4>
-            <p>Suatu gas ideal mengalami proses isobarik pada tekanan konstan <b>$10^5$ Pa</b>. Volume gas berubah dari <b>$0.1 \text{ m}^3$</b> menjadi <b>$0.3 \text{ m}^3$</b>. Jika jumlah mol gas adalah <b>$1 \text{ mol}$</b> dan suhu awal <b>$300 \text{ K}$</b>, suhu akhir <b>$900 \text{ K}$</b>, hitung Usaha (W), Perubahan Energi Dalam (ΔU), dan Kalor (Q).</p>
+            <p>Suatu gas ideal mengalami proses isobarik pada tekanan konstan <b>10^5 Pa</b>. Volume gas berubah dari <b>0.1 m^3</b> menjadi <b>0.3 m^3</b>. Jika jumlah mol gas adalah <b>1 mol</b> dan suhu awal <b>300 K</b>, suhu akhir <b>900 K</b>, hitung Usaha (W), Perubahan Energi Dalam (ΔU), dan Kalor (Q).</p>
             <p><strong>Diketahui:</strong></p>
             <ul>
-                <li>$P = 10^5 \text{ Pa}$</li>
-                <li>$V_1 = 0.1 \text{ m}^3$</li>
-                <li>$V_2 = 0.3 \text{ m}^3$</li>
-                <li>$n = 1 \text{ mol}$</li>
-                <li>$T_1 = 300 \text{ K}$</li>
-                <li>$T_2 = 900 \text{ K}$</li>
-                <li>$R = 8.314 \text{ J/(mol·K)}$</li>
+                <li>P  = 10^5 Pa</li>
+                <li>V1 = 0.1 m^3</li>
+                <li>V2 = 0.3 m^3</li>
+                <li>n  = 1 mol</li>
+                <li>T1 = 300 K</li>
+                <li>T2 = 900 K</li>
+                <li>R  = 8.314 J/mol·K</li>
             </ul>
             <p><strong>Penyelesaian (menggunakan kalkulator):</strong></p>
             <ol>
                 <li>Pilih tab "Isobarik" di Kalkulator Termodinamika.</li>
                 <li>Masukkan nilai-nilai yang diketahui.</li>
                 <li>Klik "Hitung Isobarik".</li>
+                 <li>Dan hasil akan muncul.</li>
+                
             </ol>
-            <p><strong>Hasil yang diharapkan:</strong></p>
-            <ul>
-                <li>Usaha (W) = $P \times (V_2 - V_1) = 10^5 \times (0.3 - 0.1) = 20000 \text{ J}$</li>
-                <li>Energi Dalam (ΔU) = $1.5 \times n \times R \times (T_2 - T_1) = 1.5 \times 1 \times 8.314 \times (900 - 300) = 7482.6 \text{ J}$</li>
-                <li>Kalor (Q) = $W + \Delta U = 20000 + 7482.6 = 27482.6 \text{ J}$</li>
-            </ul>
         """, unsafe_allow_html=True)
 
     with tab_kontak:
