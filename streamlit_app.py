@@ -857,7 +857,6 @@ if selected == "Beranda":
     st.markdown('<div class="home-container">', unsafe_allow_html=True)
     st.markdown('<h2 class="home-title">SELAMAT DATANG</h2>', unsafe_allow_html=True)
     st.markdown('<p class="home-subtitle">Di ThermoCalc Lab</p>', unsafe_allow_html=True)
-    st.markdown('<div class="home-illustration"><i class="fas fa-flask"></i></div>', unsafe_allow_html=True)
     st.markdown("""
         <p class="home-description">
             <strong>ThermoCalc Lab</strong> adalah alat online gratis yang dirancang untuk memudahkan Anda dalam memahami dan menghitung proses termodinamika. Aplikasi ini menyediakan kalkulator interaktif untuk berbagai proses, konverter satuan, dan visualisasi grafik P-V untuk membantu Anda memvisualisasikan konsep.
