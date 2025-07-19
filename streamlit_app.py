@@ -17,7 +17,7 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# --- Define Color Palettes (Tema Neon Gelap) ---
+# --- Define Color Palettes (Tema Neon Gelap dan Terang) ---
 # Variabel CSS untuk Tema Neon Gelap
 DARK_THEME_COLORS = {
     "bg_primary": "#1a1a2e", # Warna latar belakang utama yang lebih gelap
@@ -65,7 +65,59 @@ DARK_THEME_COLORS = {
     "plot_legend_text": "#e0e0e0",
 }
 
-current_theme = DARK_THEME_COLORS # Kita hanya pakai tema gelap/neon sekarang
+# Variabel CSS untuk Tema Terang (Light Mode) dengan kontras yang ditingkatkan
+LIGHT_THEME_COLORS = {
+    "bg_primary": "#f8f9fa",  # Warna latar belakang utama (lebih terang)
+    "bg_secondary": "#e9ecef", # Warna latar belakang sekunder (lebih terang)
+    "bg_card": "#ffffff",     # Latar belakang card/container (putih bersih)
+    "bg_sidebar": "#f1f3f5",   # Latar belakang sidebar (sedikit abu-abu)
+    "bg_active_sidebar_item": "#0056b3", # Biru yang lebih gelap untuk item sidebar aktif
+    "bg_hover_sidebar_item": "#3b93eb", # Warna hover yang lebih terlihat
+
+    "text_primary": "#529ABE", # Warna teks utama (hitam pekat)
+    "text_secondary": "#FFFFFF", # Warna teks sekunder (abu-abu gelap)
+    "text_subheader": "#ffffff", # Warna subheader (lebih gelap)
+    "text_neon_blue": "#007bff", # Biru standar
+    "text_neon_purple": "#6f42c1", # Ungu standar
+    "text_neon_green": "#28a745", # Hijau standar
+    "text_neon_red": "#dc3545", # Merah standar
+    "text_success": "#28a745", # Warna teks untuk st.success
+
+    "border_color": "#ced4da", # Warna border umum (lebih gelap)
+    "border_neon_blue": "#007bff",
+    "border_neon_purple": "#6f42c1",
+
+    "button_bg": "#007bff",    # Biru cerah untuk tombol utama
+    "button_hover_bg": "#004085", # Hover tombol yang lebih gelap
+    "button_text": "white",
+    "button_shadow": "rgba(0, 123, 255, 0.3)", # Shadow yang sedikit lebih kuat
+
+    "input_bg": "#ffffff",     # Input background (putih)
+    "input_border": "#adb5bd", # Input border (lebih gelap)
+    "input_focus_border": "#007bff", # Fokus biru
+    "input_placeholder": "#6c757d",
+
+    "header_gradient_start": "#007bff", # Biru untuk gradien header
+    "header_gradient_end": "#6f42c1", # Ungu untuk gradien header
+
+    "plot_line_isobaric": "#007bff",  # Biru
+    "plot_line_isochoric": "#28a745", # Hijau
+    "plot_line_isothermal": "#dc3545", # Merah
+    "plot_point_color": "#ffc107",    # Amber/Kuning
+    "plot_text_color": "#212529",     # Teks gelap
+    "plot_grid_color": "#ced4da",     # Grid yang lebih gelap
+    "plot_title_color": "#007bff",    # Judul biru
+    "plot_legend_bg": "#ffffff",      # Latar belakang legenda putih
+    "plot_legend_border": "#adb5bd",  # Border legenda yang lebih gelap
+    "plot_legend_text": "#212529",    # Teks legenda gelap
+}
+
+# --- Inisialisasi Session State untuk Tema ---
+if 'theme' not in st.session_state:
+    st.session_state.theme = "Terang" # Default ke tema terang
+
+# Pilih tema berdasarkan session state
+current_theme = LIGHT_THEME_COLORS if st.session_state.theme == "Terang" else DARK_THEME_COLORS
 
 # --- Custom CSS untuk UI/UX Baru ---
 st.markdown(f"""
@@ -106,6 +158,13 @@ st.markdown(f"""
             animation: background-pan 30s linear infinite alternate;
             padding-top: 0rem; /* Sesuaikan padding atas setelah header disembunyikan */
         }}
+        /* Menyesuaikan background-image untuk tema terang */
+        .stApp[data-theme="light"] {{
+            background-image: radial-gradient(at 0% 0%, rgba(0,123,255,0.05) 0, transparent 50%),
+                              radial-gradient(at 50% 100%, rgba(111,66,193,0.05) 0, transparent 50%),
+                              radial-gradient(at 100% 0%, rgba(220,53,69,0.05) 0, transparent 50%);
+        }}
+
 
         /* Styling untuk judul utama (H1) */
         h1 {{
@@ -122,6 +181,11 @@ st.markdown(f"""
             margin-bottom: 0.5rem;
             text-shadow: 0 0 20px rgba(0, 188, 212, 0.6); /* Neon glow */
         }}
+        /* Menyesuaikan text-shadow untuk tema terang */
+        .stApp[data-theme="light"] h1 {{
+            text-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
+        }}
+
         /* Styling untuk subheader (deskripsi) */
         p.subheader {{
             font-weight: 300;
@@ -131,6 +195,11 @@ st.markdown(f"""
             margin-bottom: 3rem;
             text-shadow: 0 0 5px rgba(187, 187, 187, 0.2);
         }}
+        /* Menyesuaikan text-shadow untuk tema terang */
+        .stApp[data-theme="light"] p.subheader {{
+            text-shadow: none;
+        }}
+
         /* Padding untuk container utama */
         .block-container {{
             padding-top: 3rem;
@@ -149,6 +218,13 @@ st.markdown(f"""
             transition: all 0.2s ease-in-out;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }}
+        /* Menyesuaikan box-shadow untuk tema terang */
+        .stApp[data-theme="light"] .stTextInput > div > div > input,
+        .stApp[data-theme="light"] .stTextArea > div > div > textarea,
+        .stApp[data-theme="light"] .stNumberInput > div > label + div > div > input {{
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }}
+
         /* Efek fokus untuk input teks dan textarea */
         .stTextInput > div > div > input:focus, .stTextArea > div > div > textarea:focus,
         .stNumberInput > div > label + div > div > input:focus {{
@@ -157,6 +233,13 @@ st.markdown(f"""
             background-color: {current_theme["input_bg"]}; /* Tetap sama saat fokus */
             outline: none;
         }}
+        /* Menyesuaikan box-shadow fokus untuk tema terang */
+        .stApp[data-theme="light"] .stTextInput > div > div > input:focus,
+        .stApp[data-theme="light"] .stTextArea > div > div > textarea:focus,
+        .stApp[data-theme="light"] .stNumberInput > div > label + div > div > input:focus {{
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2), 0 0 10px rgba(0, 123, 255, 0.1);
+        }}
+
         /* Placeholder styling */
         input::placeholder, textarea::placeholder {{
             color: {current_theme["input_placeholder"]};
@@ -222,6 +305,10 @@ st.markdown(f"""
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
             transform: translateY(-1px);
         }}
+        /* Menyesuaikan box-shadow hover untuk tema terang */
+        .stApp[data-theme="light"] div.stButton > button[data-testid^="stButton-primary"]:hover {{
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }}
 
         /* Styling untuk kotak hasil perhitungan */
         .result-box {{
@@ -232,6 +319,11 @@ st.markdown(f"""
             border-radius: 0.75rem;
             margin-top: 1.5rem;
         }}
+        /* Menyesuaikan box-shadow untuk tema terang */
+        .stApp[data-theme="light"] .result-box {{
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }}
+
         .result-box h3 {{
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
@@ -242,6 +334,11 @@ st.markdown(f"""
             align-items: center;
             text-shadow: 0 0 10px rgba(0, 188, 212, 0.4);
         }}
+        /* Menyesuaikan text-shadow untuk tema terang */
+        .stApp[data-theme="light"] .result-box h3 {{
+            text-shadow: none;
+        }}
+
         .result-box p {{
             color: {current_theme["text_secondary"]};
             font-size: 1rem;
@@ -266,6 +363,10 @@ st.markdown(f"""
             color: {current_theme["text_primary"]};
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }}
+        /* Menyesuaikan box-shadow untuk tema terang */
+        .stApp[data-theme="light"] .stSelectbox > div > div {{
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }}
         .stSelectbox > div > div:hover {{
             border-color: {current_theme["input_focus_border"]};
         }}
@@ -280,6 +381,11 @@ st.markdown(f"""
             align-items: center;
             text-shadow: 0 0 10px rgba(224, 224, 224, 0.2);
         }}
+        /* Menyesuaikan text-shadow untuk tema terang */
+        .stApp[data-theme="light"] .section-header {{
+            text-shadow: none;
+        }}
+
         .section-header i {{
             margin-right: 0.8rem;
             font-size: 1.6rem;
@@ -306,6 +412,11 @@ st.markdown(f"""
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
             border: 1px solid {current_theme["border_color"]};
         }}
+        /* Menyesuaikan box-shadow untuk tema terang */
+        .stApp[data-theme="light"] .st-emotion-cache-fg4pbf {{
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }}
+
         /* Mengatur ulang padding untuk input number agar tidak terlalu lebar */
         .stNumberInput > label + div > div {{
             padding: 0;
@@ -323,6 +434,14 @@ st.markdown(f"""
             margin-top: 1rem;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }}
+        /* Menyesuaikan warna dan shadow untuk tema terang */
+        .stApp[data-theme="light"] .stAlert.stAlert--info {{
+            background-color: rgba(0, 123, 255, 0.1);
+            color: {current_theme["text_neon_blue"]};
+            border-left: 5px solid {current_theme["border_neon_blue"]};
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }}
+
         /* Styling untuk kotak error (st.error) */
         .stAlert.stAlert--error {{
             background-color: rgba(255, 23, 68, 0.1); /* Neon red transparan */
@@ -333,6 +452,14 @@ st.markdown(f"""
             margin-top: 1rem;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }}
+        /* Menyesuaikan warna dan shadow untuk tema terang */
+        .stApp[data-theme="light"] .stAlert.stAlert--error {{
+            background-color: rgba(220, 53, 69, 0.1);
+            color: {current_theme["text_neon_red"]};
+            border-left: 5px solid {current_theme["text_neon_red"]};
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }}
+
         /* Styling untuk kotak warning (st.warning) */
         .stAlert.stAlert--warning {{
             background-color: rgba(255, 235, 59, 0.1); /* Neon yellow transparan */
@@ -343,6 +470,13 @@ st.markdown(f"""
             margin-top: 1rem;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }}
+        /* Menyesuaikan warna dan shadow untuk tema terang */
+        .stApp[data-theme="light"] .stAlert.stAlert--warning {{
+            background-color: rgba(255, 193, 7, 0.1);
+            color: {current_theme["plot_point_color"]};
+            border-left: 5px solid {current_theme["plot_point_color"]};
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }}
 
         /* Sidebar Styling */
         .stSidebar {{
@@ -351,6 +485,11 @@ st.markdown(f"""
             border-right: 1px solid {current_theme["border_color"]};
             box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
         }}
+        /* Menyesuaikan box-shadow untuk tema terang */
+        .stApp[data-theme="light"] .stSidebar {{
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.05);
+        }}
+
         /* Sembunyikan daftar halaman default Streamlit */
         .st-emotion-cache-10q0tfy {{ /* Ini adalah class untuk div yang membungkus daftar halaman default */
             display: none;
@@ -390,6 +529,11 @@ st.markdown(f"""
             box-shadow: 0 2px 10px rgba(0, 123, 255, 0.4);
             border-color: {current_theme["bg_active_sidebar_item"]};
         }}
+        /* Menyesuaikan box-shadow untuk tema terang */
+        .stApp[data-theme="light"] .stSidebar .stRadio div[role="radiogroup"] label[data-baseweb="radio"][aria-checked="true"] {{
+            box-shadow: 0 2px 10px rgba(0, 123, 255, 0.1);
+        }}
+
         /* Sembunyikan titik radio button default */
         .stSidebar .stRadio div[role="radiogroup"] label span svg {{
             display: none;
@@ -422,6 +566,11 @@ st.markdown(f"""
             border-bottom: 1px solid {current_theme["border_color"]};
             text-shadow: 0 0 10px rgba(0, 188, 212, 0.3);
         }}
+        /* Menyesuaikan text-shadow untuk tema terang */
+        .stApp[data-theme="light"] .sidebar-header {{
+            text-shadow: none;
+        }}
+
         /* Mengatur ulang padding atas untuk konten utama */
         .main .block-container {{
             padding-top: 1rem; /* Kurangi padding atas di konten utama */
@@ -468,6 +617,11 @@ st.markdown(f"""
             font-weight: 600;
             box-shadow: 0 -2px 10px rgba(0, 188, 212, 0.2);
         }}
+        /* Menyesuaikan box-shadow untuk tema terang */
+        .stApp[data-theme="light"] .stTabs [data-baseweb="tab"][aria-selected="true"] {{
+            box-shadow: 0 -2px 10px rgba(0, 123, 255, 0.1);
+        }}
+
         .stTabs [data-baseweb="tab"] > div[data-testid="stMarkdownContainer"] p {{
             font-size: 1.05rem; /* Ukuran font teks tab */
             color: inherit; /* Warisi warna dari parent tab */
@@ -480,6 +634,11 @@ st.markdown(f"""
             padding: 1.5rem;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }}
+        /* Menyesuaikan box-shadow untuk tema terang */
+        .stApp[data-theme="light"] .stTabs .stMarkdown {{
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }}
+
         /* Styling untuk tabel di markdown (jika ada) */
         .stMarkdown table {{
             width: 100%;
@@ -500,6 +659,11 @@ st.markdown(f"""
         .stMarkdown tr:nth-child(even) {{
             background-color: rgba(0,0,0,0.1);
         }}
+        /* Menyesuaikan background-color untuk tema terang */
+        .stApp[data-theme="light"] .stMarkdown tr:nth-child(even) {{
+            background-color: rgba(0,0,0,0.02);
+        }}
+
         .stMarkdown a {{
             color: {current_theme["text_neon_blue"]};
             text-decoration: none;
@@ -521,6 +685,11 @@ st.markdown(f"""
             border: 1px solid {current_theme["border_color"]};
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
         }}
+        /* Menyesuaikan box-shadow untuk tema terang */
+        .stApp[data-theme="light"] .home-container {{
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }}
+
         .home-title {{
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
@@ -529,6 +698,11 @@ st.markdown(f"""
             margin-bottom: 1rem;
             text-shadow: 0 0 15px rgba(0, 188, 212, 0.5);
         }}
+        /* Menyesuaikan text-shadow untuk tema terang */
+        .stApp[data-theme="light"] .home-title {{
+            text-shadow: none;
+        }}
+
         .home-subtitle {{
             font-size: 1.2rem;
             color: {current_theme["text_secondary"]};
@@ -546,11 +720,21 @@ st.markdown(f"""
             border: 3px solid {current_theme["border_neon_blue"]};
             box-shadow: 0 0 20px rgba(0, 188, 212, 0.4);
         }}
+        /* Menyesuaikan box-shadow untuk tema terang */
+        .stApp[data-theme="light"] .home-illustration {{
+            box-shadow: 0 0 20px rgba(0, 123, 255, 0.1);
+        }}
+
         .home-illustration i {{
             font-size: 120px;
             color: {current_theme["text_neon_blue"]};
             text-shadow: 0 0 10px rgba(0, 188, 212, 0.6);
         }}
+        /* Menyesuaikan text-shadow untuk tema terang */
+        .stApp[data-theme="light"] .home-illustration i {{
+            text-shadow: none;
+        }}
+
         .home-description {{
             font-size: 1rem;
             color: {current_theme["text_secondary"]};
@@ -574,6 +758,11 @@ st.markdown(f"""
             margin-bottom: 1.5rem;
             text-shadow: 0 0 10px rgba(156, 39, 176, 0.4);
         }}
+        /* Menyesuaikan text-shadow untuk tema terang */
+        .stApp[data-theme="light"] .team-section h3 {{
+            text-shadow: none;
+        }}
+
         .team-section ul {{
             list-style: none;
             padding-left: 0;
@@ -649,6 +838,19 @@ with st.sidebar:
         }
     )
 
+    # Tambahkan pilihan tema di sidebar
+    st.markdown("---") # Garis pemisah
+    st.markdown('<p style="font-weight: 600; color: ' + current_theme["text_primary"] + ';">Pilih Tema:</p>', unsafe_allow_html=True)
+    theme_choice = st.radio(
+        "", # Label kosong
+        ("Terang", "Gelap"),
+        key="theme_switcher",
+        index=0 if st.session_state.theme == "Terang" else 1,
+    )
+    if theme_choice != st.session_state.theme:
+        st.session_state.theme = theme_choice
+        st.rerun() # Rerun aplikasi untuk menerapkan tema baru
+
 # --- Konten Halaman Berdasarkan Pilihan Sidebar ---
 
 if selected == "Beranda":
@@ -718,6 +920,11 @@ elif selected == "Kalkulator Termodinamika":
                 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
                 transform: translateY(-1px);
             }}
+            /* Menyesuaikan box-shadow hover untuk tema terang */
+            .stApp[data-theme="light"] div.stButton > button[data-testid^="stButton-primary"]:hover {{
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            }}
+
             /* Gaya untuk tab aktif */
             div.stButton > button[data-testid="stButton-primary"][key="tab_isobaric_calc"] {{
                 background-color: {current_theme["bg_active_sidebar_item"] if st.session_state.active_tab_calc == 'Isobarik' else current_theme["bg_secondary"]};
@@ -739,6 +946,12 @@ elif selected == "Kalkulator Termodinamika":
                 box-shadow: {'0 4px 10px rgba(0, 123, 255, 0.4)' if st.session_state.active_tab_calc == 'Isotermal' else 'none'};
                 transform: {'translateY(-2px)' if st.session_state.active_tab_calc == 'Isotermal' else 'none'};
                 border-radius: 0.5rem 0.5rem 0 0;
+            }}
+            /* Menyesuaikan box-shadow untuk tema terang */
+            .stApp[data-theme="light"] div.stButton > button[data-testid="stButton-primary"][key="tab_isobaric_calc"],
+            .stApp[data-theme="light"] div.stButton > button[data-testid="stButton-primary"][key="tab_isochoric_calc"],
+            .stApp[data-theme="light"] div.stButton > button[data-testid="stButton-primary"][key="tab_isothermal_calc"] {{
+                box-shadow: {'0 4px 10px rgba(0, 123, 255, 0.1)' if st.session_state.active_tab_calc in ['Isobarik', 'Isokhorik', 'Isotermal'] else 'none'};
             }}
         </style>
     """, unsafe_allow_html=True)
@@ -958,18 +1171,34 @@ elif selected == "Visualisasi Proses":
         plot_type = st.session_state.plot_data['type']
         
         # Gaya plot Matplotlib (menggunakan warna hardcoded yang sesuai dengan tema neon gelap)
-        plt.style.use('dark_background')
-        text_color = current_theme["plot_text_color"]
-        grid_color = current_theme["plot_grid_color"]
-        title_color = current_theme["plot_title_color"]
-        legend_facecolor = current_theme["plot_legend_bg"]
-        legend_edgecolor = current_theme["plot_legend_border"]
-        legend_labelcolor = current_theme["plot_legend_text"]
+        # Akan menyesuaikan gaya plot berdasarkan tema saat ini
+        if st.session_state.theme == "Gelap":
+            plt.style.use('dark_background')
+            text_color = DARK_THEME_COLORS["plot_text_color"]
+            grid_color = DARK_THEME_COLORS["plot_grid_color"]
+            title_color = DARK_THEME_COLORS["plot_title_color"]
+            legend_facecolor = DARK_THEME_COLORS["plot_legend_bg"]
+            legend_edgecolor = DARK_THEME_COLORS["plot_legend_border"]
+            legend_labelcolor = DARK_THEME_COLORS["plot_legend_text"]
 
-        line_isobaric_color = current_theme["plot_line_isobaric"]
-        line_isochoric_color = current_theme["plot_line_isochoric"]
-        line_isothermal_color = current_theme["plot_line_isothermal"]
-        point_color = current_theme["plot_point_color"]
+            line_isobaric_color = DARK_THEME_COLORS["plot_line_isobaric"]
+            line_isochoric_color = DARK_THEME_COLORS["plot_line_isochoric"]
+            line_isothermal_color = DARK_THEME_COLORS["plot_line_isothermal"]
+            point_color = DARK_THEME_COLORS["plot_point_color"]
+        else: # Tema Terang
+            plt.style.use('default') # Gunakan gaya default Matplotlib untuk tema terang
+            text_color = LIGHT_THEME_COLORS["plot_text_color"]
+            grid_color = LIGHT_THEME_COLORS["plot_grid_color"]
+            title_color = LIGHT_THEME_COLORS["plot_title_color"]
+            legend_facecolor = LIGHT_THEME_COLORS["plot_legend_bg"]
+            legend_edgecolor = LIGHT_THEME_COLORS["plot_legend_border"]
+            legend_labelcolor = LIGHT_THEME_COLORS["plot_legend_text"]
+
+            line_isobaric_color = LIGHT_THEME_COLORS["plot_line_isobaric"]
+            line_isochoric_color = LIGHT_THEME_COLORS["plot_line_isochoric"]
+            line_isothermal_color = LIGHT_THEME_COLORS["plot_line_isothermal"]
+            point_color = LIGHT_THEME_COLORS["plot_point_color"]
+
 
         fig, ax = plt.subplots(figsize=(8, 6))
 
@@ -1125,7 +1354,7 @@ elif selected == "Tentang Aplikasi":
 
     with tab_kontak:
         st.markdown('<h3>Hubungi Kami</h3>', unsafe_allow_html=True)
-        st.markdown("""
+        st.markdown(f"""
             <p>Silakan tinggalkan pesan Anda. Kami akan berusaha merespons sesegera mungkin.</p>
             <form action="https://formsubmit.co/ajizayum@gmail.com" method="POST">
      <input type="text" name="name" required>
