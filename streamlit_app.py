@@ -1,4 +1,4 @@
-# Jalankan aplikasi dengan perintah `streamlit run filename.py`
+# THERMOCALC LAB PROJECT
 
 import streamlit as st
 import math
@@ -12,7 +12,7 @@ R = 8.314 # Konstanta gas ideal
 # --- Konfigurasi Halaman Streamlit ---
 st.set_page_config(
     page_title="ThermoCalc Lab",
-    page_icon="🧪", # Menggunakan emoji sebagai ikon halaman
+    page_icon="🧪", 
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -857,6 +857,7 @@ if selected == "Beranda":
     st.markdown('<div class="home-container">', unsafe_allow_html=True)
     st.markdown('<h2 class="home-title">SELAMAT DATANG</h2>', unsafe_allow_html=True)
     st.markdown('<p class="home-subtitle">Di ThermoCalc Lab</p>', unsafe_allow_html=True)
+    st.markdown('<div class="home-illustration"><i class="fas fa-flask"></i></div>', unsafe_allow_html=True)
     st.markdown("""
         <p class="home-description">
             <strong>ThermoCalc Lab</strong> adalah alat online gratis yang dirancang untuk memudahkan Anda dalam memahami dan menghitung proses termodinamika. Aplikasi ini menyediakan kalkulator interaktif untuk berbagai proses, konverter satuan, dan visualisasi grafik P-V untuk membantu Anda memvisualisasikan konsep.
