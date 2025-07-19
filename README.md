@@ -1,6 +1,6 @@
-# Utilitas Termodinamika Cerdas
+# ThermoCalc Lab
 
-Aplikasi web interaktif yang dibangun dengan Streamlit untuk membantu dalam perhitungan termodinamika dan konversi satuan.
+Aplikasi web interaktif yang dibangun dengan Streamlit untuk membantu dalam perhitungan termodinamika, konversi satuan, dan .
 
 ## Fitur
 
@@ -43,4 +43,5 @@ Ikuti langkah-langkah berikut untuk menjalankan aplikasi ini di lingkungan lokal
 
 ---
 
-Dibuat dengan ❤️ oleh [KELOMPOK 12]
+Dibuat dengan ❤️ oleh [KELOMPOK 12] 
+❤️ KIM MINJI
