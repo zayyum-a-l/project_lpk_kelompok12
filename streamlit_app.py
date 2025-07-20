@@ -67,49 +67,49 @@ DARK_THEME_COLORS = {
 
 # Variabel CSS untuk Tema Terang (Light Mode) dengan kontras yang ditingkatkan
 LIGHT_THEME_COLORS = {
-    "bg_primary": "#FFFFFF", # Latar belakang utama putih
-    "bg_secondary": "#F0F2F6", # Latar belakang elemen sekunder (abu-abu sangat terang)
-    "bg_card": "#FFFFFF", # Latar belakang card/container putih
-    "bg_sidebar": "#FFFFFF", # Latar belakang sidebar putih
-    "bg_active_sidebar_item": "#E0F2FF", # Biru muda untuk item sidebar aktif
-    "bg_hover_sidebar_item": "#E8F5FF", # Biru sangat muda saat hover
+    "bg_primary": "#1a1a2e", # Warna latar belakang utama yang lebih gelap
+    "bg_secondary": "#0f0f1c", # Warna latar belakang elemen sekunder
+    "bg_card": "#1f1f3a", # Latar belakang card/container
+    "bg_sidebar": "#1a1a2e", # Latar belakang sidebar
+    "bg_active_sidebar_item": "#007bff", # Warna biru cerah untuk item sidebar aktif (sesuai option_menu default)
+    "bg_hover_sidebar_item": "#2a2a4a", # Warna hover sidebar
 
-    "text_primary": "#262626", # Warna teks utama gelap
-    "text_secondary": "#595959", # Warna teks sekunder abu-abu
-    "text_subheader": "#737373", # Warna untuk subheader abu-abu
-    "text_neon_blue": "#007bff", # Biru cerah
-    "text_neon_purple": "#6f42c1", # Ungu
-    "text_neon_green": "#28a745", # Hijau
-    "text_neon_red": "#dc3545", # Merah
-    "text_success": "#28a745", # Warna teks untuk st.success
+    "text_primary": "#868080", # Warna teks utama
+    "text_secondary": "#bbbbbb", # Warna teks sekunder
+    "text_subheader": "#a0aec0", # Warna untuk subheader
+    "text_neon_blue": "#00bcd4", # Neon Blue
+    "text_neon_purple": "#9c27b0", # Neon Purple
+    "text_neon_green": "#00e676", # Neon Green
+    "text_neon_red": "#ff1744", # Neon Red
+    "text_success": "#00e676", # Warna teks untuk st.success
 
-    "border_color": "#D3D3D3", # Warna border umum abu-abu terang
-    "border_neon_blue": "#007bff",
-    "border_neon_purple": "#6f42c1",
+    "border_color": "#3a3a5e", # Warna border umum
+    "border_neon_blue": "#00bcd4",
+    "border_neon_purple": "#9c27b0",
 
     "button_bg": "#007bff", # Biru cerah untuk tombol utama
     "button_hover_bg": "#0056b3",
     "button_text": "white",
-    "button_shadow": "rgba(0, 123, 255, 0.2)", # Shadow lebih lembut
+    "button_shadow": "rgba(0, 123, 255, 0.4)",
 
-    "input_bg": "#F8F8F8", # Latar belakang input sangat terang
-    "input_border": "#D3D3D3",
-    "input_focus_border": "#007bff", # Biru cerah saat fokus
-    "input_placeholder": "#A0A0A0",
+    "input_bg": "#2a2a4a", # Latar belakang input
+    "input_border": "#4a4a6e",
+    "input_focus_border": "#00bcd4", # Neon blue focus
+    "input_placeholder": "#888888",
 
-    "header_gradient_start": "#007bff", # Biru
-    "header_gradient_end": "#6f42c1", # Ungu
+    "header_gradient_start": "#00bcd4", # Neon blue
+    "header_gradient_end": "#9c27b0", # Neon purple
 
-    "plot_line_isobaric": "#007bff", # Biru
-    "plot_line_isochoric": "#28a745", # Hijau
-    "plot_line_isothermal": "#dc3545", # Merah
-    "plot_point_color": "#ffc107", # Kuning
-    "plot_text_color": "#262626", # Teks plot gelap
-    "plot_grid_color": "#E0E0E0", # Grid plot terang
-    "plot_title_color": "#007bff",
-    "plot_legend_bg": "#FFFFFF", # Latar belakang legend putih
-    "plot_legend_border": "#D3D3D3",
-    "plot_legend_text": "#262626",
+    "plot_line_isobaric": "#00bcd4", # Neon blue
+    "plot_line_isochoric": "#00e676", # Neon green
+    "plot_line_isothermal": "#ff1744", # Neon red
+    "plot_point_color": "#ffeb3b", # Neon yellow
+    "plot_text_color": "#e0e0e0",
+    "plot_grid_color": "#4a4a6e",
+    "plot_title_color": "#00bcd4",
+    "plot_legend_bg": "#1f1f3a",
+    "plot_legend_border": "#4a4a6e",
+    "plot_legend_text": "#e0e0e0",
 }
 
 # --- Inisialisasi Session State untuk Tema ---
@@ -150,22 +150,19 @@ st.markdown(f"""
             background: linear-gradient(135deg, {current_theme["bg_primary"]} 0%, {current_theme["bg_secondary"]} 100%);
             color: {current_theme["text_primary"]};
             font-family: 'Inter', sans-serif;
+            background-image: radial-gradient(at 0% 0%, rgba(0,255,255,0.1) 0, transparent 50%),
+                              radial-gradient(at 50% 100%, rgba(156,39,176,0.1) 0, transparent 50%),
+                              radial-gradient(at 100% 0%, rgba(255,87,34,0.1) 0, transparent 50%);
             background-attachment: fixed;
             background-size: 200% 200%;
             animation: background-pan 30s linear infinite alternate;
             padding-top: 0rem; /* Sesuaikan padding atas setelah header disembunyikan */
         }}
-        /* Menyesuaikan background-image untuk tema gelap */
-        .stApp[data-theme="dark"] {{
-            background-image: radial-gradient(at 0% 0%, rgba(0,255,255,0.1) 0, transparent 50%),
-                              radial-gradient(at 50% 100%, rgba(156,39,176,0.1) 0, transparent 50%),
-                              radial-gradient(at 100% 0%, rgba(255,87,34,0.1) 0, transparent 50%);
-        }}
         /* Menyesuaikan background-image untuk tema terang */
         .stApp[data-theme="light"] {{
-            background-image: radial-gradient(at 0% 0%, rgba(0,123,255,0.02) 0, transparent 50%),
-                              radial-gradient(at 50% 100%, rgba(111,66,193,0.02) 0, transparent 50%),
-                              radial-gradient(at 100% 0%, rgba(220,53,69,0.02) 0, transparent 50%);
+            background-image: radial-gradient(at 0% 0%, rgba(0,123,255,0.05) 0, transparent 50%),
+                              radial-gradient(at 50% 100%, rgba(111,66,193,0.05) 0, transparent 50%),
+                              radial-gradient(at 100% 0%, rgba(220,53,69,0.05) 0, transparent 50%);
         }}
 
 
@@ -182,9 +179,6 @@ st.markdown(f"""
             text-align: center;
             font-size: 4rem;
             margin-bottom: 0.5rem;
-        }}
-        /* Menyesuaikan text-shadow untuk tema gelap */
-        .stApp[data-theme="dark"] h1 {{
             text-shadow: 0 0 20px rgba(0, 188, 212, 0.6); /* Neon glow */
         }}
         /* Menyesuaikan text-shadow untuk tema terang */
@@ -199,9 +193,6 @@ st.markdown(f"""
             text-align: center;
             font-size: 1.25rem;
             margin-bottom: 3rem;
-        }}
-        /* Menyesuaikan text-shadow untuk tema gelap */
-        .stApp[data-theme="dark"] p.subheader {{
             text-shadow: 0 0 5px rgba(187, 187, 187, 0.2);
         }}
         /* Menyesuaikan text-shadow untuk tema terang */
@@ -225,11 +216,6 @@ st.markdown(f"""
             padding: 0.8rem 1.2rem;
             border-radius: 0.5rem; /* Lebih tajam */
             transition: all 0.2s ease-in-out;
-        }}
-        /* Menyesuaikan box-shadow untuk tema gelap */
-        .stApp[data-theme="dark"] .stTextInput > div > div > input,
-        .stApp[data-theme="dark"] .stTextArea > div > div > textarea,
-        .stApp[data-theme="dark"] .stNumberInput > div > label + div > div > input {{
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }}
         /* Menyesuaikan box-shadow untuk tema terang */
@@ -243,14 +229,9 @@ st.markdown(f"""
         .stTextInput > div > div > input:focus, .stTextArea > div > div > textarea:focus,
         .stNumberInput > div > label + div > div > input:focus {{
             border-color: {current_theme["input_focus_border"]};
+            box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.4), 0 0 15px rgba(0, 188, 212, 0.3); /* Neon glow focus */
             background-color: {current_theme["input_bg"]}; /* Tetap sama saat fokus */
             outline: none;
-        }}
-        /* Menyesuaikan box-shadow fokus untuk tema gelap */
-        .stApp[data-theme="dark"] .stTextInput > div > div > input:focus,
-        .stApp[data-theme="dark"] .stTextArea > div > div > textarea:focus,
-        .stApp[data-theme="dark"] .stNumberInput > div > label + div > div > input:focus {{
-            box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.4), 0 0 15px rgba(0, 188, 212, 0.3); /* Neon glow focus */
         }}
         /* Menyesuaikan box-shadow fokus untuk tema terang */
         .stApp[data-theme="light"] .stTextInput > div > div > input:focus,
@@ -272,6 +253,7 @@ st.markdown(f"""
             font-weight: 600;
             padding: 0.8rem 1.5rem;
             border-radius: 0.5rem;
+            box-shadow: 0 3px 10px {current_theme["button_shadow"]};
             transition: all 0.2s ease-in-out;
             width: 100%;
             margin-top: 1rem;
@@ -279,15 +261,6 @@ st.markdown(f"""
             position: relative;
             overflow: hidden;
         }}
-        /* Menyesuaikan box-shadow untuk tema gelap */
-        .stApp[data-theme="dark"] div.stButton > button {{
-            box-shadow: 0 3px 10px {current_theme["button_shadow"]};
-        }}
-        /* Menyesuaikan box-shadow untuk tema terang */
-        .stApp[data-theme="light"] div.stButton > button {{
-            box-shadow: 0 3px 10px {current_theme["button_shadow"]};
-        }}
-
         div.stButton > button:hover {{
             transform: translateY(-2px);
             box-shadow: 0 5px 15px {current_theme["button_shadow"]};
@@ -329,29 +302,22 @@ st.markdown(f"""
         }}
         div.stButton > button[data-testid^="stButton-primary"]:hover {{
             background: {current_theme["bg_card"]}; /* Sedikit lebih terang saat hover */
-        }}
-        /* Menyesuaikan box-shadow hover untuk tema gelap */
-        .stApp[data-theme="dark"] div.stButton > button[data-testid^="stButton-primary"]:hover {{
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
             transform: translateY(-1px);
         }}
         /* Menyesuaikan box-shadow hover untuk tema terang */
         .stApp[data-theme="light"] div.stButton > button[data-testid^="stButton-primary"]:hover {{
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            transform: translateY(-1px);
         }}
 
         /* Styling untuk kotak hasil perhitungan */
         .result-box {{
             background: {current_theme["bg_card"]};
             border: 1px solid {current_theme["border_color"]};
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
             padding: 1.5rem;
             border-radius: 0.75rem;
             margin-top: 1.5rem;
-        }}
-        /* Menyesuaikan box-shadow untuk tema gelap */
-        .stApp[data-theme="dark"] .result-box {{
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
         }}
         /* Menyesuaikan box-shadow untuk tema terang */
         .stApp[data-theme="light"] .result-box {{
@@ -366,9 +332,6 @@ st.markdown(f"""
             margin-bottom: 0.8rem;
             display: flex;
             align-items: center;
-        }}
-        /* Menyesuaikan text-shadow untuk tema gelap */
-        .stApp[data-theme="dark"] .result-box h3 {{
             text-shadow: 0 0 10px rgba(0, 188, 212, 0.4);
         }}
         /* Menyesuaikan text-shadow untuk tema terang */
@@ -398,9 +361,6 @@ st.markdown(f"""
             border-radius: 0.5rem;
             border: 1px solid {current_theme["input_border"]};
             color: {current_theme["text_primary"]};
-        }}
-        /* Menyesuaikan box-shadow untuk tema gelap */
-        .stApp[data-theme="dark"] .stSelectbox > div > div {{
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }}
         /* Menyesuaikan box-shadow untuk tema terang */
@@ -419,9 +379,6 @@ st.markdown(f"""
             margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
-        }}
-        /* Menyesuaikan text-shadow untuk tema gelap */
-        .stApp[data-theme="dark"] .section-header {{
             text-shadow: 0 0 10px rgba(224, 224, 224, 0.2);
         }}
         /* Menyesuaikan text-shadow untuk tema terang */
@@ -452,11 +409,8 @@ st.markdown(f"""
             background: {current_theme["bg_card"]};
             border-radius: 0.75rem; /* Lebih tajam */
             padding: 2rem;
-            border: 1px solid {current_theme["border_color"]};
-        }}
-        /* Menyesuaikan box-shadow untuk tema gelap */
-        .stApp[data-theme="dark"] .st-emotion-cache-fg4pbf {{
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+            border: 1px solid {current_theme["border_color"]};
         }}
         /* Menyesuaikan box-shadow untuk tema terang */
         .stApp[data-theme="light"] .st-emotion-cache-fg4pbf {{
@@ -478,12 +432,6 @@ st.markdown(f"""
             border-radius: 0.5rem;
             padding: 1rem;
             margin-top: 1rem;
-        }}
-        /* Menyesuaikan warna dan shadow untuk tema gelap */
-        .stApp[data-theme="dark"] .stAlert.stAlert--info {{
-            background-color: rgba(0, 188, 212, 0.1);
-            color: {current_theme["text_neon_blue"]};
-            border-left: 5px solid {current_theme["border_neon_blue"]};
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }}
         /* Menyesuaikan warna dan shadow untuk tema terang */
@@ -502,12 +450,6 @@ st.markdown(f"""
             border-radius: 0.5rem;
             padding: 1rem;
             margin-top: 1rem;
-        }}
-        /* Menyesuaikan warna dan shadow untuk tema gelap */
-        .stApp[data-theme="dark"] .stAlert.stAlert--error {{
-            background-color: rgba(255, 23, 68, 0.1);
-            color: {current_theme["text_neon_red"]};
-            border-left: 5px solid {current_theme["text_neon_red"]};
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }}
         /* Menyesuaikan warna dan shadow untuk tema terang */
@@ -526,12 +468,6 @@ st.markdown(f"""
             border-radius: 0.5rem;
             padding: 1rem;
             margin-top: 1rem;
-        }}
-        /* Menyesuaikan warna dan shadow untuk tema gelap */
-        .stApp[data-theme="dark"] .stAlert.stAlert--warning {{
-            background-color: rgba(255, 235, 59, 0.1);
-            color: {current_theme["plot_point_color"]};
-            border-left: 5px solid {current_theme["plot_point_color"]};
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }}
         /* Menyesuaikan warna dan shadow untuk tema terang */
@@ -547,9 +483,6 @@ st.markdown(f"""
             background-color: {current_theme["bg_sidebar"]};
             padding-top: 2rem;
             border-right: 1px solid {current_theme["border_color"]};
-        }}
-        /* Menyesuaikan box-shadow untuk tema gelap */
-        .stApp[data-theme="dark"] .stSidebar {{
             box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
         }}
         /* Menyesuaikan box-shadow untuk tema terang */
@@ -593,11 +526,8 @@ st.markdown(f"""
         .stSidebar .stRadio div[role="radiogroup"] label[data-baseweb="radio"][aria-checked="true"] {{
             background-color: {current_theme["bg_active_sidebar_item"]};
             color: {current_theme["button_text"]};
-            border-color: {current_theme["bg_active_sidebar_item"]};
-        }}
-        /* Menyesuaikan box-shadow untuk tema gelap */
-        .stApp[data-theme="dark"] .stSidebar .stRadio div[role="radiogroup"] label[data-baseweb="radio"][aria-checked="true"] {{
             box-shadow: 0 2px 10px rgba(0, 123, 255, 0.4);
+            border-color: {current_theme["bg_active_sidebar_item"]};
         }}
         /* Menyesuaikan box-shadow untuk tema terang */
         .stApp[data-theme="light"] .stSidebar .stRadio div[role="radiogroup"] label[data-baseweb="radio"][aria-checked="true"] {{
@@ -634,9 +564,6 @@ st.markdown(f"""
             margin-bottom: 2rem;
             padding-bottom: 1rem;
             border-bottom: 1px solid {current_theme["border_color"]};
-        }}
-        /* Menyesuaikan text-shadow untuk tema gelap */
-        .stApp[data-theme="dark"] .sidebar-header {{
             text-shadow: 0 0 10px rgba(0, 188, 212, 0.3);
         }}
         /* Menyesuaikan text-shadow untuk tema terang */
@@ -658,6 +585,7 @@ st.markdown(f"""
             margin-bottom: 2rem;
             padding-bottom: 1rem;
             border-bottom: 1px solid {current_theme["border_color"]};
+            text-shadow: 0 0 10px rgba(0, 188, 212, 0.3);
         }}
         /* Streamlit Tabs styling (for Tentang Aplikasi page) */
         .stTabs [data-baseweb="tab-list"] {{
@@ -686,9 +614,7 @@ st.markdown(f"""
             background-color: {current_theme["bg_card"]};
             color: {current_theme["text_neon_blue"]};
             border-bottom: 3px solid {current_theme["border_neon_blue"]}; /* Garis bawah neon */
-        }}
-        /* Menyesuaikan box-shadow untuk tema gelap */
-        .stApp[data-theme="dark"] .stTabs [data-baseweb="tab"][aria-selected="true"] {{
+            font-weight: 600;
             box-shadow: 0 -2px 10px rgba(0, 188, 212, 0.2);
         }}
         /* Menyesuaikan box-shadow untuk tema terang */
@@ -706,9 +632,6 @@ st.markdown(f"""
             border: 1px solid {current_theme["border_color"]};
             border-radius: 0.75rem;
             padding: 1.5rem;
-        }}
-        /* Menyesuaikan box-shadow untuk tema gelap */
-        .stApp[data-theme="dark"] .stTabs .stMarkdown {{
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }}
         /* Menyesuaikan box-shadow untuk tema terang */
@@ -734,11 +657,11 @@ st.markdown(f"""
             font-weight: 600;
         }}
         .stMarkdown tr:nth-child(even) {{
-            background-color: rgba(0,0,0,0.02); /* Lebih terang untuk tema terang */
-        }}
-        /* Menyesuaikan background-color untuk tema gelap */
-        .stApp[data-theme="dark"] .stMarkdown tr:nth-child(even) {{
             background-color: rgba(0,0,0,0.1);
+        }}
+        /* Menyesuaikan background-color untuk tema terang */
+        .stApp[data-theme="light"] .stMarkdown tr:nth-child(even) {{
+            background-color: rgba(0,0,0,0.02);
         }}
 
         .stMarkdown a {{
@@ -760,9 +683,6 @@ st.markdown(f"""
             background: {current_theme["bg_card"]};
             border-radius: 1rem;
             border: 1px solid {current_theme["border_color"]};
-        }}
-        /* Menyesuaikan box-shadow untuk tema gelap */
-        .stApp[data-theme="dark"] .home-container {{
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
         }}
         /* Menyesuaikan box-shadow untuk tema terang */
@@ -776,9 +696,6 @@ st.markdown(f"""
             font-size: 3rem;
             color: {current_theme["text_neon_blue"]};
             margin-bottom: 1rem;
-        }}
-        /* Menyesuaikan text-shadow untuk tema gelap */
-        .stApp[data-theme="dark"] .home-title {{
             text-shadow: 0 0 15px rgba(0, 188, 212, 0.5);
         }}
         /* Menyesuaikan text-shadow untuk tema terang */
@@ -801,9 +718,6 @@ st.markdown(f"""
             justify-content: center;
             margin-bottom: 2rem;
             border: 3px solid {current_theme["border_neon_blue"]};
-        }}
-        /* Menyesuaikan box-shadow untuk tema gelap */
-        .stApp[data-theme="dark"] .home-illustration {{
             box-shadow: 0 0 20px rgba(0, 188, 212, 0.4);
         }}
         /* Menyesuaikan box-shadow untuk tema terang */
@@ -814,9 +728,6 @@ st.markdown(f"""
         .home-illustration i {{
             font-size: 120px;
             color: {current_theme["text_neon_blue"]};
-        }}
-        /* Menyesuaikan text-shadow untuk tema gelap */
-        .stApp[data-theme="dark"] .home-illustration i {{
             text-shadow: 0 0 10px rgba(0, 188, 212, 0.6);
         }}
         /* Menyesuaikan text-shadow untuk tema terang */
@@ -845,9 +756,6 @@ st.markdown(f"""
             color: {current_theme["text_neon_purple"]};
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
-        }}
-        /* Menyesuaikan text-shadow untuk tema gelap */
-        .stApp[data-theme="dark"] .team-section h3 {{
             text-shadow: 0 0 10px rgba(156, 39, 176, 0.4);
         }}
         /* Menyesuaikan text-shadow untuk tema terang */
@@ -1009,42 +917,35 @@ elif selected == "Kalkulator Termodinamika":
             }}
             div.stButton > button[data-testid^="stButton-primary"]:hover {{
                 background: {current_theme["bg_card"]}; /* Sedikit lebih terang saat hover */
-            }}
-            /* Menyesuaikan box-shadow hover untuk tema gelap */
-            .stApp[data-theme="dark"] div.stButton > button[data-testid^="stButton-primary"]:hover {{
                 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
                 transform: translateY(-1px);
             }}
             /* Menyesuaikan box-shadow hover untuk tema terang */
             .stApp[data-theme="light"] div.stButton > button[data-testid^="stButton-primary"]:hover {{
                 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-                transform: translateY(-1px);
             }}
 
             /* Gaya untuk tab aktif */
             div.stButton > button[data-testid="stButton-primary"][key="tab_isobaric_calc"] {{
                 background-color: {current_theme["bg_active_sidebar_item"] if st.session_state.active_tab_calc == 'Isobarik' else current_theme["bg_secondary"]};
                 color: {current_theme["button_text"] if st.session_state.active_tab_calc == 'Isobarik' else current_theme["text_secondary"]};
+                box-shadow: {'0 4px 10px rgba(0, 123, 255, 0.4)' if st.session_state.active_tab_calc == 'Isobarik' else 'none'};
                 transform: {'translateY(-2px)' if st.session_state.active_tab_calc == 'Isobarik' else 'none'};
                 border-radius: 0.5rem 0.5rem 0 0; /* Rounded top only */
             }}
             div.stButton > button[data-testid="stButton-primary"][key="tab_isochoric_calc"] {{
                 background-color: {current_theme["bg_active_sidebar_item"] if st.session_state.active_tab_calc == 'Isokhorik' else current_theme["bg_secondary"]};
                 color: {current_theme["button_text"] if st.session_state.active_tab_calc == 'Isokhorik' else current_theme["text_secondary"]};
+                box-shadow: {'0 4px 10px rgba(0, 123, 255, 0.4)' if st.session_state.active_tab_calc == 'Isokhorik' else 'none'};
                 transform: {'translateY(-2px)' if st.session_state.active_tab_calc == 'Isokhorik' else 'none'};
                 border-radius: 0.5rem 0.5rem 0 0;
             }}
             div.stButton > button[data-testid="stButton-primary"][key="tab_isothermal_calc"] {{
                 background-color: {current_theme["bg_active_sidebar_item"] if st.session_state.active_tab_calc == 'Isotermal' else current_theme["bg_secondary"]};
                 color: {current_theme["button_text"] if st.session_state.active_tab_calc == 'Isotermal' else current_theme["text_secondary"]};
+                box-shadow: {'0 4px 10px rgba(0, 123, 255, 0.4)' if st.session_state.active_tab_calc == 'Isotermal' else 'none'};
                 transform: {'translateY(-2px)' if st.session_state.active_tab_calc == 'Isotermal' else 'none'};
                 border-radius: 0.5rem 0.5rem 0 0;
-            }}
-            /* Menyesuaikan box-shadow untuk tema gelap */
-            .stApp[data-theme="dark"] div.stButton > button[data-testid="stButton-primary"][key="tab_isobaric_calc"],
-            .stApp[data-theme="dark"] div.stButton > button[data-testid="stButton-primary"][key="tab_isochoric_calc"],
-            .stApp[data-theme="dark"] div.stButton > button[data-testid="stButton-primary"][key="tab_isothermal_calc"] {{
-                box-shadow: {'0 4px 10px rgba(0, 123, 255, 0.4)' if st.session_state.active_tab_calc in ['Isobarik', 'Isokhorik', 'Isotermal'] else 'none'};
             }}
             /* Menyesuaikan box-shadow untuk tema terang */
             .stApp[data-theme="light"] div.stButton > button[data-testid="stButton-primary"][key="tab_isobaric_calc"],
