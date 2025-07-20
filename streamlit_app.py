@@ -74,7 +74,7 @@ LIGHT_THEME_COLORS = {
     "bg_active_sidebar_item": "#007bff", # Warna biru cerah untuk item sidebar aktif (sesuai option_menu default)
     "bg_hover_sidebar_item": "#2a2a4a", # Warna hover sidebar
 
-    "text_primary": "#e0e0e0", # Warna teks utama
+    "text_primary": "#314570", # Warna teks utama
     "text_secondary": "#bbbbbb", # Warna teks sekunder
     "text_subheader": "#a0aec0", # Warna untuk subheader
     "text_neon_blue": "#00bcd4", # Neon Blue
