@@ -12,7 +12,7 @@ R = 8.314 # Konstanta gas ideal
 # --- Konfigurasi Halaman Streamlit ---
 st.set_page_config(
     page_title="ThermoCalc Lab",
-    page_icon="🧪", 
+    page_icon="🌡️", 
     layout="wide",
     initial_sidebar_state="expanded"
 )
