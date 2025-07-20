@@ -122,19 +122,6 @@ current_theme = LIGHT_THEME_COLORS if st.session_state.theme == "Terang" else DA
 # --- Custom CSS untuk UI/UX Baru ---
 st.markdown(f"""
     <style>
-        /* Sembunyikan header/toolbar default Streamlit jika ada */
-        .stToolbar {{
-            display: none !important;
-        }}
-        header {{
-            visibility: hidden !important;
-            height: 0px !important;
-            padding: 0px !important;
-        }}
-        .stApp > header {{
-            background-color: transparent !important;
-        }}
-
         /* Definisi keyframes untuk animasi latar belakang */
         @keyframes background-pan {{
             0% {{
