@@ -67,49 +67,49 @@ DARK_THEME_COLORS = {
 
 # Variabel CSS untuk Tema Terang (Light Mode) dengan kontras yang ditingkatkan
 LIGHT_THEME_COLORS = {
-    "bg_primary": "#f8f9fa",  # Warna latar belakang utama (lebih terang)
-    "bg_secondary": "#e9ecef", # Warna latar belakang sekunder (lebih terang)
-    "bg_card": "#ffffff",     # Latar belakang card/container (putih bersih)
-    "bg_sidebar": "#f1f3f5",   # Latar belakang sidebar (sedikit abu-abu)
-    "bg_active_sidebar_item": "#0056b3", # Biru yang lebih gelap untuk item sidebar aktif
-    "bg_hover_sidebar_item": "#3b93eb", # Warna hover yang lebih terlihat
+    "bg_primary": "#1a1a2e", # Warna latar belakang utama yang lebih gelap
+    "bg_secondary": "#0f0f1c", # Warna latar belakang elemen sekunder
+    "bg_card": "#1f1f3a", # Latar belakang card/container
+    "bg_sidebar": "#1a1a2e", # Latar belakang sidebar
+    "bg_active_sidebar_item": "#007bff", # Warna biru cerah untuk item sidebar aktif (sesuai option_menu default)
+    "bg_hover_sidebar_item": "#2a2a4a", # Warna hover sidebar
 
-    "text_primary": "#529ABE", # Warna teks utama (hitam pekat)
-    "text_secondary": "#FFFFFF", # Warna teks sekunder (abu-abu gelap)
-    "text_subheader": "#ffffff", # Warna subheader (lebih gelap)
-    "text_neon_blue": "#007bff", # Biru standar
-    "text_neon_purple": "#6f42c1", # Ungu standar
-    "text_neon_green": "#28a745", # Hijau standar
-    "text_neon_red": "#dc3545", # Merah standar
-    "text_success": "#28a745", # Warna teks untuk st.success
+    "text_primary": "#e0e0e0", # Warna teks utama
+    "text_secondary": "#bbbbbb", # Warna teks sekunder
+    "text_subheader": "#a0aec0", # Warna untuk subheader
+    "text_neon_blue": "#00bcd4", # Neon Blue
+    "text_neon_purple": "#9c27b0", # Neon Purple
+    "text_neon_green": "#00e676", # Neon Green
+    "text_neon_red": "#ff1744", # Neon Red
+    "text_success": "#00e676", # Warna teks untuk st.success
 
-    "border_color": "#ced4da", # Warna border umum (lebih gelap)
-    "border_neon_blue": "#007bff",
-    "border_neon_purple": "#6f42c1",
+    "border_color": "#3a3a5e", # Warna border umum
+    "border_neon_blue": "#00bcd4",
+    "border_neon_purple": "#9c27b0",
 
-    "button_bg": "#007bff",    # Biru cerah untuk tombol utama
-    "button_hover_bg": "#004085", # Hover tombol yang lebih gelap
+    "button_bg": "#007bff", # Biru cerah untuk tombol utama
+    "button_hover_bg": "#0056b3",
     "button_text": "white",
-    "button_shadow": "rgba(0, 123, 255, 0.3)", # Shadow yang sedikit lebih kuat
+    "button_shadow": "rgba(0, 123, 255, 0.4)",
 
-    "input_bg": "#ffffff",     # Input background (putih)
-    "input_border": "#adb5bd", # Input border (lebih gelap)
-    "input_focus_border": "#007bff", # Fokus biru
-    "input_placeholder": "#6c757d",
+    "input_bg": "#2a2a4a", # Latar belakang input
+    "input_border": "#4a4a6e",
+    "input_focus_border": "#00bcd4", # Neon blue focus
+    "input_placeholder": "#888888",
 
-    "header_gradient_start": "#007bff", # Biru untuk gradien header
-    "header_gradient_end": "#6f42c1", # Ungu untuk gradien header
+    "header_gradient_start": "#00bcd4", # Neon blue
+    "header_gradient_end": "#9c27b0", # Neon purple
 
-    "plot_line_isobaric": "#007bff",  # Biru
-    "plot_line_isochoric": "#28a745", # Hijau
-    "plot_line_isothermal": "#dc3545", # Merah
-    "plot_point_color": "#ffc107",    # Amber/Kuning
-    "plot_text_color": "#212529",     # Teks gelap
-    "plot_grid_color": "#ced4da",     # Grid yang lebih gelap
-    "plot_title_color": "#007bff",    # Judul biru
-    "plot_legend_bg": "#ffffff",      # Latar belakang legenda putih
-    "plot_legend_border": "#adb5bd",  # Border legenda yang lebih gelap
-    "plot_legend_text": "#212529",    # Teks legenda gelap
+    "plot_line_isobaric": "#00bcd4", # Neon blue
+    "plot_line_isochoric": "#00e676", # Neon green
+    "plot_line_isothermal": "#ff1744", # Neon red
+    "plot_point_color": "#ffeb3b", # Neon yellow
+    "plot_text_color": "#e0e0e0",
+    "plot_grid_color": "#4a4a6e",
+    "plot_title_color": "#00bcd4",
+    "plot_legend_bg": "#1f1f3a",
+    "plot_legend_border": "#4a4a6e",
+    "plot_legend_text": "#e0e0e0",
 }
 
 # --- Inisialisasi Session State untuk Tema ---
