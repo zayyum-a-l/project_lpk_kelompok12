@@ -1,13 +1,13 @@
+# THERMOCALC LAB PROJECT
+
 import streamlit as st
 import math
 import matplotlib.pyplot as plt
 import numpy as np
 from streamlit_option_menu import option_menu
 
-# Konstanta gas ideal
-R = 8.314 
+R = 8.314 # Konstanta gas ideal
 
-# Konfigurasi Halaman Streamlit
 st.set_page_config(
     page_title="ThermoCalc Lab",
     page_icon="🌡️",
@@ -15,7 +15,6 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Palet Warna untuk tema
 DARK_THEME_COLORS = {
     "bg_primary": "#1a1a2e",
     "bg_secondary": "#0f0f1c",
@@ -48,6 +47,8 @@ DARK_THEME_COLORS = {
     "plot_legend_bg": "#1f1f3a",
 }
 
+LIGHT_THEME_COLORS = DARK_THEME_COLORS
+
 # Inisialisasi session state untuk menyimpan data antar halaman
 if 'theme' not in st.session_state:
     st.session_state.theme = "Gelap"
@@ -61,11 +62,13 @@ current_theme = DARK_THEME_COLORS
 # Custom CSS untuk styling aplikasi
 st.markdown(f"""
     <style>
+        /* General styling */
         .stApp {{
             background: linear-gradient(135deg, {current_theme["bg_primary"]} 0%, {current_theme["bg_secondary"]} 100%);
             color: {current_theme["text_primary"]};
             font-family: 'Inter', sans-serif;
         }}
+        .block-container {{ padding-top: 2rem; padding-bottom: 3rem; max-width: 1200px; }}
         h1 {{
             font-family: 'Montserrat', sans-serif;
             font-weight: 800;
@@ -87,26 +90,75 @@ st.markdown(f"""
             border-bottom: 2px solid {current_theme["border_neon_blue"]};
             padding-bottom: 0.5rem;
         }}
-        .result-box {{
-            background: {current_theme["bg_card"]};
-            border: 1px solid {current_theme["border_color"]};
-            padding: 1.5rem;
-            border-radius: 0.75rem;
-            margin-top: 1.5rem;
+        .section-header i {{
+            margin-right: 1rem;
+            font-size: 1.8rem;
+            color: {current_theme["text_neon_blue"]};
         }}
-        .result-box h3 {{ color: {current_theme["text_neon_blue"]}; }}
-        .result-box span {{ color: {current_theme["plot_point_color"]}; font-weight: bold; }}
+        .subsection-header {{
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            color: {current_theme["text_primary"]};
+            font-size: 1.25rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+        }}
+        /* Input, Selectbox, and Button Styling */
+        .stTextInput > div > div > input, .stTextArea > div > div > textarea,
+        .stNumberInput > div > label + div > div > input,
+        .stSelectbox > div > div {{
+            background-color: {current_theme["input_bg"]};
+            border: 1px solid {current_theme["input_border"]};
+            color: {current_theme["text_primary"]};
+            border-radius: 0.5rem;
+            transition: all 0.2s ease-in-out;
+        }}
+        .stTextInput > div > div > input:focus, .stTextArea > div > div > textarea:focus,
+        .stNumberInput > div > label + div > div > input:focus,
+        .stSelectbox > div > div:hover {{
+            border-color: {current_theme["input_focus_border"]};
+            box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.4);
+        }}
         div.stButton > button {{
             background: {current_theme["button_bg"]};
             color: {current_theme["button_text"]};
             font-weight: 600;
+            padding: 0.8rem 1.5rem;
             border-radius: 0.5rem;
+            box-shadow: 0 3px 10px {current_theme["button_shadow"]};
+            transition: all 0.2s ease-in-out;
             width: 100%;
             margin-top: 1rem;
             border: none;
         }}
+        div.stButton > button:hover {{
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px {current_theme["button_shadow"]};
+            opacity: 0.9;
+        }}
+        /* Result Box */
+        .result-box {{
+            background: {current_theme["bg_card"]};
+            border: 1px solid {current_theme["border_color"]};
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin-top: 1.5rem;
+        }}
+        .result-box h3 {{
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: {current_theme["text_neon_blue"]};
+            font-size: 1.4rem;
+        }}
+        .result-box span {{
+            color: {current_theme["plot_point_color"]};
+            font-weight: bold;
+        }}
+        /* Sidebar Styling */
         .stSidebar {{
             background-color: {current_theme["bg_sidebar"]};
+            border-right: 1px solid {current_theme["border_color"]};
         }}
         .sidebar-header {{
             font-family: 'Montserrat', sans-serif;
@@ -118,11 +170,53 @@ st.markdown(f"""
             padding-bottom: 1rem;
             border-bottom: 1px solid {current_theme["border_color"]};
         }}
+        /* Tabs Styling */
+        .stTabs [data-baseweb="tab-list"] {{ border-bottom: 1px solid {current_theme["border_color"]}; }}
+        .stTabs [data-baseweb="tab"] {{ background-color: {current_theme["bg_secondary"]}; }}
+        .stTabs [data-baseweb="tab"]:hover {{ background-color: {current_theme["bg_card"]}; color: {current_theme["text_primary"]}; }}
+        .stTabs [data-baseweb="tab"][aria-selected="true"] {{
+            background-color: {current_theme["bg_card"]};
+            color: {current_theme["text_neon_blue"]};
+            border-bottom: 3px solid {current_theme["border_neon_blue"]};
+        }}
+        .stMarkdown a {{ color: {current_theme["text_neon_blue"]}; text-decoration: none; }}
+        .stMarkdown a:hover {{ text-decoration: underline; }}
+        .stMarkdown hr {{ border-top: 1px solid {current_theme["border_color"]}; }}
+        /* Contact Form Specific Styling */
         form.contact-form {{
             display: flex;
             flex-direction: column;
             gap: 1rem;
             margin-top: 1rem;
+        }}
+        form.contact-form input, form.contact-form textarea {{
+            background-color: {current_theme["input_bg"]};
+            border: 1px solid {current_theme["input_border"]};
+            color: {current_theme["text_primary"]};
+            padding: 0.8rem 1.2rem;
+            border-radius: 0.5rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+        }}
+        form.contact-form input::placeholder, form.contact-form textarea::placeholder {{
+             color: #888;
+        }}
+        form.contact-form input:focus, form.contact-form textarea:focus {{
+            border-color: {current_theme["input_focus_border"]};
+            box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.4);
+            outline: none;
+        }}
+        form.contact-form button {{
+            background: {current_theme["button_bg"]};
+            color: {current_theme["button_text"]};
+            font-weight: 600;
+            padding: 0.8rem 1.5rem;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+            width: auto;
+            align-self: flex-start;
         }}
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -174,15 +268,18 @@ with st.sidebar:
         }
     )
 
-# Konten Halaman berdasarkan pilihan di sidebar
 if selected == "Beranda":
     st.markdown("<h1>ThermoCalc Lab</h1>", unsafe_allow_html=True)
     st.markdown("""
         <p style="text-align: center; font-size: 1.25rem; color: #a0aec0; margin-bottom: 2rem;">
             Kalkulator Termodinamika, Konverter Satuan, dan Visualisasi dalam Satu Aplikasi
         </p>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
         <p style="text-align: center; max-width: 800px; margin: auto; line-height: 1.6;">
-            <strong>ThermoCalc Lab</strong> adalah alat online gratis yang dirancang untuk memudahkan Anda dalam memahami dan menghitung proses termodinamika. 
+            <strong>ThermoCalc Lab</strong> adalah alat online gratis yang dirancang untuk memudahkan Anda dalam memahami dan menghitung proses termodinamika. Aplikasi ini menyediakan kalkulator interaktif, konverter satuan, dan visualisasi grafik P-V.
+            <br><br>
             Silakan pilih alat yang sesuai dari menu di samping untuk memulai!
         </p>
     """, unsafe_allow_html=True)
@@ -209,6 +306,8 @@ elif selected == "Kalkulator Termodinamika":
         ("Isobarik", "Isokhorik", "Isotermal")
     )
 
+    st.markdown(f'<div class="subsection-header">Input untuk Proses {process_type}</div>', unsafe_allow_html=True)
+    
     with st.container():
         if process_type == "Isobarik":
             p = st.number_input("Tekanan (p) dalam Pascal", value=None, placeholder="Masukkan nilai...", min_value=0.0, format="%.2f")
@@ -274,12 +373,11 @@ elif selected == "Konverter Satuan":
                 if from_unit == to_unit:
                     result = value
                 else:
-                    # Konversi ke Kelvin sebagai basis
+                    k = 0
                     if from_unit == "Celsius (°C)": k = value + 273.15
                     elif from_unit == "Fahrenheit (°F)": k = (value - 32) * 5/9 + 273.15
                     elif from_unit == "Kelvin (K)": k = value
-                    
-                    # Konversi dari Kelvin ke unit tujuan
+
                     if to_unit == "Celsius (°C)": result = k - 273.15
                     elif to_unit == "Fahrenheit (°F)": result = (k - 273.15) * 9/5 + 32
                     elif to_unit == "Kelvin (K)": result = k
@@ -382,36 +480,74 @@ elif selected == "Tentang Aplikasi":
     with tab_materi:
         st.markdown('<h3>Dasar-dasar Termodinamika</h3>', unsafe_allow_html=True)
         st.markdown("""
-            Termodinamika adalah cabang fisika yang mempelajari hubungan antara **panas, kerja, dan energi**.
+            Termodinamika adalah cabang fisika yang mempelajari hubungan antara **panas, kerja, dan energi**. Ini menjelaskan bagaimana energi diubah dari satu bentuk ke bentuk lain dan bagaimana hal itu mempengaruhi materi. Konsep-konsep ini sangat penting dalam kimia, teknik, dan ilmu-ilmu fisika lainnya.
             <h4>Hukum-hukum Fundamental Termodinamika:</h4>
             <ul>
+                <li><strong>Hukum Awal (Zeroth Law):</strong> Jika dua sistem berada dalam kesetimbangan termal dengan sistem ketiga, maka mereka berada dalam kesetimbangan termal satu sama lain.</li>
                 <li><strong>Hukum Pertama:</strong> Energi tidak dapat diciptakan atau dimusnahkan. Perubahan energi dalam (ΔU) suatu sistem sama dengan kalor (Q) yang ditambahkan ke sistem dikurangi kerja (W) yang dilakukan oleh sistem.</li>
             </ul>
             """, unsafe_allow_html=True)
         st.latex(r'''\Delta U = Q - W''')
         st.markdown("""
+            <ul>
+                <li><strong>Hukum Kedua:</strong> Entropi total dari sistem terisolasi cenderung meningkat seiring waktu, mencapai nilai maksimum.</li>
+                <li><strong>Hukum Ketiga:</strong> Entropi sistem mendekati nilai minimum konstan saat suhu mendekati nol absolut.</li>
+            </ul>
             <hr>
             <h3>Proses-Proses Termodinamika</h3>
+            <p>Aplikasi ini fokus pada tiga proses fundamental untuk gas ideal:</p>
+            
             <h4>1. Proses Isobarik (Tekanan Konstan)</h4>
-            <p>Proses isobarik terjadi pada tekanan konstan (ΔP = 0).</p>
+            <p>Proses isobarik terjadi pada tekanan konstan (ΔP = 0). Ketika gas memuai atau menyusut pada tekanan konstan, kerja dilakukan. Secara historis, studi tentang hubungan volume dan suhu pada tekanan konstan oleh <strong>Joseph Louis Gay-Lussac</strong> pada awal abad ke-19 menjadi dasar bagi pemahaman proses ini.</p>
+            <ul>
+                <li><strong>Usaha (W):</strong> Kerja yang dilakukan oleh gas adalah hasil kali tekanan dengan perubahan volume.</li>
+            </ul>
             """, unsafe_allow_html=True)
         st.latex(r'''W = P \cdot (V_2 - V_1) = P \Delta V''')
-        st.latex(r'''\Delta U = \frac{3}{2} n R \Delta T''')
+        st.markdown("""
+            <ul>
+                <li><strong>Perubahan Energi Dalam (ΔU):</strong> Untuk gas ideal monoatomik, perubahan energi dalam tergantung pada perubahan suhu.</li>
+            </ul>
+            """, unsafe_allow_html=True)
+        st.latex(r'''\Delta U = \frac{3}{2} n R (T_2 - T_1) = \frac{3}{2} n R \Delta T''')
+        st.markdown("""
+            <ul>
+                <li><strong>Kalor (Q):</strong> Menurut Hukum Pertama Termodinamika, kalor yang ditransfer sama dengan jumlah kerja dan perubahan energi dalam.</li>
+            </ul>
+            """, unsafe_allow_html=True)
         st.latex(r'''Q = \Delta U + W''')
 
         st.markdown("""
             <h4>2. Proses Isokhorik (Volume Konstan)</h4>
-            <p>Proses isokhorik terjadi pada volume konstan (ΔV = 0). Karena tidak ada perubahan volume, tidak ada kerja yang dilakukan.</p>
+            <p>Proses isokhorik terjadi pada volume konstan (ΔV = 0). Karena tidak ada perubahan volume, tidak ada kerja yang dilakukan oleh atau pada sistem. Penyelidikan oleh <strong>Guillaume Amontons</strong> pada abad ke-17 yang menunjukkan hubungan antara tekanan dan suhu pada volume konstan merupakan cikal bakal dari konsep ini.</p>
+            <ul><li><strong>Usaha (W):</strong> Karena tidak ada perubahan volume (ΔV = 0), maka tidak ada kerja yang dilakukan.</li></ul>
             """, unsafe_allow_html=True)
         st.latex(r'''W = 0''')
+        st.markdown("""
+            <ul><li><strong>Perubahan Energi Dalam (ΔU) & Kalor (Q):</strong> Karena kerja adalah nol, semua kalor yang ditransfer digunakan untuk mengubah energi dalam sistem.</li></ul>
+            """, unsafe_allow_html=True)
         st.latex(r'''Q = \Delta U = \frac{3}{2} n R \Delta T''')
 
         st.markdown("""
             <h4>3. Proses Isotermal (Suhu Konstan)</h4>
-            <p>Proses isotermal terjadi pada suhu konstan (ΔT = 0). Karena suhu konstan, energi dalam gas ideal juga konstan.</p>
+            <p>Proses isotermal terjadi pada suhu konstan (ΔT = 0). Hubungan terbalik antara tekanan dan volume pada suhu konstan pertama kali dijelaskan oleh <strong>Robert Boyle</strong> pada abad ke-17 (Hukum Boyle). Karena suhu konstan, energi dalam gas ideal juga konstan.</p>
+            <ul><li><strong>Perubahan Energi Dalam (ΔU):</strong> Karena suhu tidak berubah (ΔT = 0), energi dalam sistem tetap konstan.</li></ul>
             """, unsafe_allow_html=True)
         st.latex(r'''\Delta U = 0''')
+        st.markdown("""
+            <ul><li><strong>Usaha (W) & Kalor (Q):</strong> Berdasarkan Hukum Pertama, karena ΔU = 0, semua kalor yang ditransfer diubah menjadi kerja. Kerja dihitung menggunakan integral.</li></ul>
+            """, unsafe_allow_html=True)
         st.latex(r'''Q = W = n R T \ln\left(\frac{V_2}{V_1}\right)''')
+        
+        st.markdown("""
+            <hr>
+            <h4>Sumber</h4>
+            <ul>
+                <li>Serway, R. A., & Jewett, J. W. (2014). <em>Physics for Scientists and Engineers with Modern Physics.</em> Cengage Learning.</li>
+                <li>Atkins, P., & de Paula, J. (2014). <em>Atkins' Physical Chemistry.</em> Oxford University Press.</li>
+                <li>Khan Academy. (n.d.). <em>Thermodynamics.</em> Diakses dari <a href="https://www.khanacademy.org/science/physics/thermodynamics" target="_blank">khanacademy.org</a></li>
+            </ul>
+        """, unsafe_allow_html=True)
 
     with tab_cara:
         st.markdown('<h3>Cara Menggunakan ThermoCalc Lab:</h3>', unsafe_allow_html=True)
@@ -420,11 +556,23 @@ elif selected == "Tentang Aplikasi":
                 <li><strong>Navigasi:</strong> Gunakan menu di sisi kiri untuk berpindah antar halaman.</li>
                 <li><strong>Kalkulator Termodinamika:</strong>
                     <ul>
-                        <li>Pilih jenis proses (Isobarik, Isokhorik, atau Isotermal).</li>
-                        <li>Masukkan nilai yang diperlukan dan klik "Hitung".</li>
+                        <li>Gunakan dropdown untuk memilih jenis proses (Isobarik, Isokhorik, atau Isotermal).</li>
+                        <li>Masukkan nilai yang diperlukan pada kolom input yang muncul.</li>
+                        <li>Klik tombol "Hitung" untuk melihat hasilnya.</li>
                     </ul>
                 </li>
-                <li><strong>Visualisasi Proses:</strong> Halaman ini akan otomatis menampilkan grafik P-V dari perhitungan terakhir yang Anda lakukan.</li>
+                <li><strong>Konverter Satuan:</strong>
+                    <ul>
+                        <li>Pilih kategori (Suhu, Tekanan, Volume).</li>
+                        <li>Pilih satuan asal ("Dari") dan satuan tujuan ("Ke").</li>
+                        <li>Masukkan nilai yang ingin dikonversi dan klik tombol "Konversi".</li>
+                    </ul>
+                </li>
+                <li><strong>Visualisasi Proses:</strong>
+                    <ul>
+                        <li>Halaman ini akan otomatis menampilkan grafik P-V dari perhitungan terakhir yang Anda lakukan di halaman "Kalkulator Termodinamika".</li>
+                    </ul>
+                </li>
             </ol>
         """, unsafe_allow_html=True)
 
@@ -450,4 +598,7 @@ elif selected == "Tentang Aplikasi":
                  <textarea name="message" placeholder="Pesan Anda" required rows="4"></textarea>
                  <button type="submit">Kirim</button>
             </form>
+            <p style="margin-top: 2rem; color: {current_theme["text_secondary"]};">
+                Anda juga bisa menemukan kami di GitHub: <a href="https://github.com/zayyum-a-l" target="_blank">Profil GitHub Kami</a>
+            </p>
         """, unsafe_allow_html=True)
