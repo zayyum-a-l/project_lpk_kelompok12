@@ -281,7 +281,6 @@ if selected == "Beranda":
         </p>
     """, unsafe_allow_html=True)
 
-    # --- UPDATED: Changed the GIF link to a more reliable one ---
     st.markdown("""
         <p style="text-align: center; max-width: 800px; margin: auto; line-height: 1.6;">
             <strong>ThermoCalc Lab</strong> adalah alat online gratis yang dirancang untuk memudahkan Anda dalam memahami dan menghitung proses termodinamika. Aplikasi ini menyediakan kalkulator interaktif, konverter satuan, dan visualisasi grafik P-V.
@@ -316,42 +315,57 @@ elif selected == "Kalkulator Termodinamika":
     
     with st.container():
         if process_type == "Isobarik":
-            p = st.number_input("Tekanan (p) dalam Pascal", min_value=0.0, format="%.2f")
-            v1 = st.number_input("Volume Awal (V₁) dalam m³", min_value=0.0, format="%.4f")
-            v2 = st.number_input("Volume Akhir (V₂) dalam m³", min_value=0.0, format="%.4f")
-            n = st.number_input("Jumlah mol (n)", min_value=0.0, format="%.4f")
-            t1 = st.number_input("Suhu Awal (T₁) dalam Kelvin", min_value=0.0, format="%.2f")
-            t2 = st.number_input("Suhu Akhir (T₂) dalam Kelvin", min_value=0.0, format="%.2f")
+            # UPDATED: Added value=None and placeholder
+            p = st.number_input("Tekanan (p) dalam Pascal", value=None, placeholder="Masukkan nilai...", min_value=0.0, format="%.2f")
+            v1 = st.number_input("Volume Awal (V₁) dalam m³", value=None, placeholder="Masukkan nilai...", min_value=0.0, format="%.4f")
+            v2 = st.number_input("Volume Akhir (V₂) dalam m³", value=None, placeholder="Masukkan nilai...", min_value=0.0, format="%.4f")
+            n = st.number_input("Jumlah mol (n)", value=None, placeholder="Masukkan nilai...", min_value=0.0, format="%.4f")
+            t1 = st.number_input("Suhu Awal (T₁) dalam Kelvin", value=None, placeholder="Masukkan nilai...", min_value=0.0, format="%.2f")
+            t2 = st.number_input("Suhu Akhir (T₂) dalam Kelvin", value=None, placeholder="Masukkan nilai...", min_value=0.0, format="%.2f")
 
             if st.button("Hitung Isobarik"):
-                W, dU, Q = calculate_isobaric(p, v1, v2, n, t1, t2)
-                st.markdown(f'<div class="result-box"><h3>Hasil Perhitungan:</h3><p>Usaha (W): <span>{W:.4f} J</span></p><p>Energi Dalam (ΔU): <span>{dU:.4f} J</span></p><p>Kalor (Q): <span>{Q:.4f} J</span></p></div>', unsafe_allow_html=True)
-                st.session_state.plot_data = {'type': 'isobaric', 'p': p, 'v1': v1, 'v2': v2}
-                st.session_state.plot_title = f"Grafik P-V Proses Isobarik (P={p:.2f} Pa)"
+                # UPDATED: Added validation check
+                if all(val is not None for val in [p, v1, v2, n, t1, t2]):
+                    W, dU, Q = calculate_isobaric(p, v1, v2, n, t1, t2)
+                    st.markdown(f'<div class="result-box"><h3>Hasil Perhitungan:</h3><p>Usaha (W): <span>{W:.4f} J</span></p><p>Energi Dalam (ΔU): <span>{dU:.4f} J</span></p><p>Kalor (Q): <span>{Q:.4f} J</span></p></div>', unsafe_allow_html=True)
+                    st.session_state.plot_data = {'type': 'isobaric', 'p': p, 'v1': v1, 'v2': v2}
+                    st.session_state.plot_title = f"Grafik P-V Proses Isobarik (P={p:.2f} Pa)"
+                else:
+                    st.warning("Harap isi semua kolom input untuk melanjutkan perhitungan.")
 
         elif process_type == "Isokhorik":
-            n = st.number_input("Jumlah mol (n)", min_value=0.0, format="%.4f")
-            t1 = st.number_input("Suhu Awal (T₁) dalam Kelvin", min_value=0.0, format="%.2f")
-            t2 = st.number_input("Suhu Akhir (T₂) dalam Kelvin", min_value=0.0, format="%.2f")
-            v_const = st.number_input("Volume Konstan (V) dalam m³", min_value=0.01, format="%.4f")
+            # UPDATED: Added value=None and placeholder
+            n = st.number_input("Jumlah mol (n)", value=None, placeholder="Masukkan nilai...", min_value=0.0, format="%.4f")
+            t1 = st.number_input("Suhu Awal (T₁) dalam Kelvin", value=None, placeholder="Masukkan nilai...", min_value=0.0, format="%.2f")
+            t2 = st.number_input("Suhu Akhir (T₂) dalam Kelvin", value=None, placeholder="Masukkan nilai...", min_value=0.0, format="%.2f")
+            v_const = st.number_input("Volume Konstan (V) dalam m³", value=None, placeholder="Masukkan nilai...", min_value=0.01, format="%.4f")
 
             if st.button("Hitung Isokhorik"):
-                W, dU, Q = calculate_isochoric(n, t1, t2)
-                st.markdown(f'<div class="result-box"><h3>Hasil Perhitungan:</h3><p>Usaha (W): <span>{W:.4f} J</span></p><p>Energi Dalam (ΔU): <span>{dU:.4f} J</span></p><p>Kalor (Q): <span>{Q:.4f} J</span></p></div>', unsafe_allow_html=True)
-                st.session_state.plot_data = {'type': 'isochoric', 'n': n, 't1': t1, 't2': t2, 'v_const': v_const}
-                st.session_state.plot_title = f"Grafik P-V Proses Isokhorik (V={v_const:.2f} m³)"
+                # UPDATED: Added validation check
+                if all(val is not None for val in [n, t1, t2, v_const]):
+                    W, dU, Q = calculate_isochoric(n, t1, t2)
+                    st.markdown(f'<div class="result-box"><h3>Hasil Perhitungan:</h3><p>Usaha (W): <span>{W:.4f} J</span></p><p>Energi Dalam (ΔU): <span>{dU:.4f} J</span></p><p>Kalor (Q): <span>{Q:.4f} J</span></p></div>', unsafe_allow_html=True)
+                    st.session_state.plot_data = {'type': 'isochoric', 'n': n, 't1': t1, 't2': t2, 'v_const': v_const}
+                    st.session_state.plot_title = f"Grafik P-V Proses Isokhorik (V={v_const:.2f} m³)"
+                else:
+                    st.warning("Harap isi semua kolom input untuk melanjutkan perhitungan.")
 
         elif process_type == "Isotermal":
-            n = st.number_input("Jumlah mol (n)", min_value=0.0, format="%.4f")
-            T = st.number_input("Suhu (T) dalam Kelvin", min_value=0.01, format="%.2f")
-            v1 = st.number_input("Volume Awal (V₁) dalam m³", min_value=0.01, format="%.4f")
-            v2 = st.number_input("Volume Akhir (V₂) dalam m³", min_value=0.01, format="%.4f")
+            # UPDATED: Added value=None and placeholder
+            n = st.number_input("Jumlah mol (n)", value=None, placeholder="Masukkan nilai...", min_value=0.0, format="%.4f")
+            T = st.number_input("Suhu (T) dalam Kelvin", value=None, placeholder="Masukkan nilai...", min_value=0.01, format="%.2f")
+            v1 = st.number_input("Volume Awal (V₁) dalam m³", value=None, placeholder="Masukkan nilai...", min_value=0.01, format="%.4f")
+            v2 = st.number_input("Volume Akhir (V₂) dalam m³", value=None, placeholder="Masukkan nilai...", min_value=0.01, format="%.4f")
 
             if st.button("Hitung Isotermal"):
-                W, dU, Q = calculate_isothermal(n, T, v1, v2)
-                st.markdown(f'<div class="result-box"><h3>Hasil Perhitungan:</h3><p>Usaha (W): <span>{W:.4f} J</span></p><p>Energi Dalam (ΔU): <span>{dU:.4f} J</span></p><p>Kalor (Q): <span>{Q:.4f} J</span></p></div>', unsafe_allow_html=True)
-                st.session_state.plot_data = {'type': 'isothermal', 'n': n, 'T': T, 'v1': v1, 'v2': v2}
-                st.session_state.plot_title = f"Grafik P-V Proses Isotermal (T={T:.2f} K)"
+                # UPDATED: Added validation check
+                if all(val is not None for val in [n, T, v1, v2]):
+                    W, dU, Q = calculate_isothermal(n, T, v1, v2)
+                    st.markdown(f'<div class="result-box"><h3>Hasil Perhitungan:</h3><p>Usaha (W): <span>{W:.4f} J</span></p><p>Energi Dalam (ΔU): <span>{dU:.4f} J</span></p><p>Kalor (Q): <span>{Q:.4f} J</span></p></div>', unsafe_allow_html=True)
+                    st.session_state.plot_data = {'type': 'isothermal', 'n': n, 'T': T, 'v1': v1, 'v2': v2}
+                    st.session_state.plot_title = f"Grafik P-V Proses Isotermal (T={T:.2f} K)"
+                else:
+                    st.warning("Harap isi semua kolom input untuk melanjutkan perhitungan.")
 
 elif selected == "Konverter Satuan":
     st.markdown('<h2 class="section-header"><i class="fas fa-exchange-alt"></i> Konverter Satuan</h2>', unsafe_allow_html=True)
@@ -363,22 +377,27 @@ elif selected == "Konverter Satuan":
         col1, col2 = st.columns(2)
         from_unit = col1.selectbox("Dari", units, index=0)
         to_unit = col2.selectbox("Ke", units, index=1)
-        value = st.number_input(f"Masukkan nilai dalam {from_unit}", format="%.2f")
+        # UPDATED: Added value=None and placeholder
+        value = st.number_input(f"Masukkan nilai dalam {from_unit}", value=None, placeholder="Masukkan nilai...", format="%.2f")
 
         if st.button("Konversi Suhu"):
-            if from_unit == to_unit:
-                result = value
-            else:
-                k = 0
-                if from_unit == "Celsius (°C)": k = value + 273.15
-                elif from_unit == "Fahrenheit (°F)": k = (value - 32) * 5/9 + 273.15
-                elif from_unit == "Kelvin (K)": k = value
+            # UPDATED: Added validation check
+            if value is not None:
+                if from_unit == to_unit:
+                    result = value
+                else:
+                    k = 0
+                    if from_unit == "Celsius (°C)": k = value + 273.15
+                    elif from_unit == "Fahrenheit (°F)": k = (value - 32) * 5/9 + 273.15
+                    elif from_unit == "Kelvin (K)": k = value
 
-                if to_unit == "Celsius (°C)": result = k - 273.15
-                elif to_unit == "Fahrenheit (°F)": result = (k - 273.15) * 9/5 + 32
-                elif to_unit == "Kelvin (K)": result = k
-            
-            st.success(f"**Hasil:** {value:.2f} {from_unit} = **{result:.2f} {to_unit}**")
+                    if to_unit == "Celsius (°C)": result = k - 273.15
+                    elif to_unit == "Fahrenheit (°F)": result = (k - 273.15) * 9/5 + 32
+                    elif to_unit == "Kelvin (K)": result = k
+                
+                st.success(f"**Hasil:** {value:.2f} {from_unit} = **{result:.2f} {to_unit}**")
+            else:
+                st.warning("Harap masukkan nilai yang akan dikonversi.")
 
     elif category == "Tekanan":
         units = ("Pascal (Pa)", "Atmosfer (atm)", "mmHg")
@@ -387,12 +406,17 @@ elif selected == "Konverter Satuan":
         col1, col2 = st.columns(2)
         from_unit = col1.selectbox("Dari", units, index=1)
         to_unit = col2.selectbox("Ke", units, index=0)
-        value = st.number_input(f"Masukkan nilai dalam {from_unit}", format="%.5f")
+        # UPDATED: Added value=None and placeholder
+        value = st.number_input(f"Masukkan nilai dalam {from_unit}", value=None, placeholder="Masukkan nilai...", format="%.5f")
 
         if st.button("Konversi Tekanan"):
-            pascal = value * factors[from_unit]
-            result = pascal / factors[to_unit]
-            st.success(f"**Hasil:** {value:.5f} {from_unit} = **{result:.5f} {to_unit}**")
+            # UPDATED: Added validation check
+            if value is not None:
+                pascal = value * factors[from_unit]
+                result = pascal / factors[to_unit]
+                st.success(f"**Hasil:** {value:.5f} {from_unit} = **{result:.5f} {to_unit}**")
+            else:
+                st.warning("Harap masukkan nilai yang akan dikonversi.")
 
     elif category == "Volume":
         units = ("Meter Kubik (m³)", "Sentimeter Kubik (cm³)", "Milimeter Kubik (mm³)")
@@ -401,12 +425,17 @@ elif selected == "Konverter Satuan":
         col1, col2 = st.columns(2)
         from_unit = col1.selectbox("Dari", units, index=0)
         to_unit = col2.selectbox("Ke", units, index=1)
-        value = st.number_input(f"Masukkan nilai dalam {from_unit}", format="%.9f")
+        # UPDATED: Added value=None and placeholder
+        value = st.number_input(f"Masukkan nilai dalam {from_unit}", value=None, placeholder="Masukkan nilai...", format="%.9f")
 
         if st.button("Konversi Volume"):
-            m3 = value * factors[from_unit]
-            result = m3 / factors[to_unit]
-            st.success(f"**Hasil:** {value:.9f} {from_unit} = **{result:.9f} {to_unit}**")
+            # UPDATED: Added validation check
+            if value is not None:
+                m3 = value * factors[from_unit]
+                result = m3 / factors[to_unit]
+                st.success(f"**Hasil:** {value:.9f} {from_unit} = **{result:.9f} {to_unit}**")
+            else:
+                st.warning("Harap masukkan nilai yang akan dikonversi.")
 
 
 elif selected == "Visualisasi Proses":
