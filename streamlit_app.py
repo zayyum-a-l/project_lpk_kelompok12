@@ -276,19 +276,18 @@ with st.sidebar:
 if selected == "Beranda":
     st.markdown("<h1>ThermoCalc Lab</h1>", unsafe_allow_html=True)
     st.markdown("""
-        <p style="text-align: center; font-size: 1.25rem; color: #a0aec0; margin-bottom: 3rem;">
+        <p style="text-align: center; font-size: 1.25rem; color: #a0aec0; margin-bottom: 2rem;">
             Kalkulator Termodinamika, Konverter Satuan, dan Visualisasi dalam Satu Aplikasi
         </p>
     """, unsafe_allow_html=True)
+
+    # --- UPDATED: Changed the GIF link to a more reliable one ---
     st.markdown("""
-        <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-            <div style="font-size: 120px; color: #00bcd4; margin-bottom: 2rem;"><i class="fas fa-flask-vial"></i></div>
-            <p style="max-width: 800px; line-height: 1.6;">
-                <strong>ThermoCalc Lab</strong> adalah alat online gratis yang dirancang untuk memudahkan Anda dalam memahami dan menghitung proses termodinamika. Aplikasi ini menyediakan kalkulator interaktif, konverter satuan, dan visualisasi grafik P-V.
-                <br><br>
-                Silakan pilih alat yang sesuai dari menu di samping untuk memulai!
-            </p>
-        </div>
+        <p style="text-align: center; max-width: 800px; margin: auto; line-height: 1.6;">
+            <strong>ThermoCalc Lab</strong> adalah alat online gratis yang dirancang untuk memudahkan Anda dalam memahami dan menghitung proses termodinamika. Aplikasi ini menyediakan kalkulator interaktif, konverter satuan, dan visualisasi grafik P-V.
+            <br><br>
+            Silakan pilih alat yang sesuai dari menu di samping untuk memulai!
+        </p>
     """, unsafe_allow_html=True)
     
     st.markdown('<div style="margin-top: 4rem; text-align: center;">', unsafe_allow_html=True)
@@ -308,7 +307,6 @@ if selected == "Beranda":
 elif selected == "Kalkulator Termodinamika":
     st.markdown('<h2 class="section-header"><i class="fas fa-calculator"></i> Kalkulator Termodinamika</h2>', unsafe_allow_html=True)
 
-    # --- REVISED: Simplified process selection with a selectbox ---
     process_type = st.selectbox(
         "Pilih Jenis Proses Termodinamika:",
         ("Isobarik", "Isokhorik", "Isotermal")
@@ -358,7 +356,6 @@ elif selected == "Kalkulator Termodinamika":
 elif selected == "Konverter Satuan":
     st.markdown('<h2 class="section-header"><i class="fas fa-exchange-alt"></i> Konverter Satuan</h2>', unsafe_allow_html=True)
 
-    # --- REVISED: Simplified unit converter ---
     category = st.selectbox("Pilih Kategori Konversi:", ["Suhu", "Tekanan", "Volume"])
 
     if category == "Suhu":
@@ -372,13 +369,11 @@ elif selected == "Konverter Satuan":
             if from_unit == to_unit:
                 result = value
             else:
-                # Convert input to base unit (Kelvin)
                 k = 0
                 if from_unit == "Celsius (°C)": k = value + 273.15
                 elif from_unit == "Fahrenheit (°F)": k = (value - 32) * 5/9 + 273.15
                 elif from_unit == "Kelvin (K)": k = value
 
-                # Convert from Kelvin to target unit
                 if to_unit == "Celsius (°C)": result = k - 273.15
                 elif to_unit == "Fahrenheit (°F)": result = (k - 273.15) * 9/5 + 32
                 elif to_unit == "Kelvin (K)": result = k
@@ -471,7 +466,6 @@ elif selected == "Tentang Aplikasi":
     tab_materi, tab_cara, tab_contoh, tab_kontak = st.tabs(["Materi", "Cara Penggunaan", "Contoh Soal", "Kontak"])
 
     with tab_materi:
-        # --- REVISED: Expanded material content ---
         st.markdown('<h3>Dasar-dasar Termodinamika</h3>', unsafe_allow_html=True)
         st.markdown("""
             Termodinamika adalah cabang fisika yang mempelajari hubungan antara **panas, kerja, dan energi**. Ini menjelaskan bagaimana energi diubah dari satu bentuk ke bentuk lain dan bagaimana hal itu mempengaruhi materi. Konsep-konsep ini sangat penting dalam kimia, teknik, dan ilmu-ilmu fisika lainnya.
@@ -585,7 +579,6 @@ elif selected == "Tentang Aplikasi":
 
     with tab_kontak:
         st.markdown('<h3>Hubungi Kami</h3>', unsafe_allow_html=True)
-        # --- REVISED: Improved contact form with placeholders ---
         st.markdown(f"""
             <p>Punya pertanyaan atau masukan? Silakan tinggalkan pesan Anda.</p>
             <form class="contact-form" action="https://formsubmit.co/ajizayum@gmail.com" method="POST">
